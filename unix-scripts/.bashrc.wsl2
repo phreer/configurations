@@ -117,4 +117,3 @@ NAMESERVER=$(cat /etc/resolv.conf | grep -i nameserver | awk '{ print $2 }')
 PROXY_PORT=10901
 export HTTP_PROXY=http://$NAMESERVER:$PROXY_PORT
 export HTTPS_PROXY=http://$NAMESERVER:$PROXY_PORT
-alias ssh-lab='ssh phree@172.18.167.140'

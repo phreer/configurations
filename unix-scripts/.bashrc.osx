@@ -1,6 +1,5 @@
 alias ll="ls -alf"
 export CLICOLOR=1
-alias ssh-lab='ssh -X phree@172.18.167.140'
 
 export DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
 export LIBRARY_PATH=$LIBRARY_PATH:$HOME/local/lib
