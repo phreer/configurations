@@ -1,4 +1,0 @@
-export https_proxy=localhost:58591
-export http_proxy=localhost:58591
-export HTTPS_PROXY=localhost:58591
-export HTTP_PROXY=localhost:58591
