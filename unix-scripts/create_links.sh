@@ -41,3 +41,4 @@ if [ ! -f "$HOME"/.ssh/config ]; then
 else
 	echo "File " "$HOME"/.ssh/config "existed. Skip to link." 
 fi
+
