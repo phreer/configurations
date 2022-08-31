@@ -5,7 +5,6 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 OS=$(uname)
 if [ "$OS" = "Linux" ]; then
 	PREFIX=linux
-	INIT_FILENAME="linux-init.sh"
 elif [ "$OS" = "Darwin" ]; then
 	prefix=osx
 else
