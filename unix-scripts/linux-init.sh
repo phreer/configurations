@@ -45,8 +45,8 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 # Setup XWindow server.
 if is_wsl; then
     export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+    export LIBGL_ALWAYS_INDIRECT=1
 fi
-export LIBGL_ALWAYS_INDIRECT=1
 export TERM=screen-256color
 export PATH=$PATH:$HOME/local/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib:$HOME/local/lib64 
