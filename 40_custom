@@ -1,0 +1,38 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+menuentry 'GVT-d Debian GNU/Linux' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-d8e236dd-5ec4-4593-b1c9-48ca33b6b093' {
+	load_video
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root  d8e236dd-5ec4-4593-b1c9-48ca33b6b093
+	else
+	  search --no-floppy --fs-uuid --set=root d8e236dd-5ec4-4593-b1c9-48ca33b6b093
+	fi
+	echo	'Loading Linux 6.0.0-rc3+ ...'
+	linux	/boot/vmlinuz-6.0.0-rc3+ root=UUID=d8e236dd-5ec4-4593-b1c9-48ca33b6b093 ro  quiet intel_iommu=on modprobe.blacklist=radeon,nouveau,nvidia,nvidiafb,nvidia-gpu,snd_hda_intel,snd_hda_codec_hdmi,i915 vfio-pci.ids=8086:4c8a video=efifb:off,vesafb:off
+	echo	'Loading initial ramdisk ...'
+	initrd	/boot/initrd.img-6.0.0-rc3+
+}
+
+menuentry 'DRM Debian GNU/Linux' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-d8e236dd-5ec4-4593-b1c9-48ca33b6b093' {
+	load_video
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root  d8e236dd-5ec4-4593-b1c9-48ca33b6b093
+	else
+	  search --no-floppy --fs-uuid --set=root d8e236dd-5ec4-4593-b1c9-48ca33b6b093
+	fi
+	echo	'Loading Linux 5.19.0-rc6+ ...'
+	linux	/boot/vmlinuz-5.19.0-rc6+ root=UUID=d8e236dd-5ec4-4593-b1c9-48ca33b6b093 ro  quiet intel_iommu=on modprobe.blacklist=radeon,nouveau,nvidia,nvidiafb,nvidia-gpu,snd_hda_intel,snd_hda_codec_hdmi,i915 vfio-pci.ids=8086:4c8a
+	echo	'Loading initial ramdisk ...'
+	initrd	/boot/initrd.img-5.19.0-rc6+
+}
