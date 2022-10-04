@@ -3,12 +3,19 @@ set nocompatible              " be iMproved, required
 set nu
 set autoindent
 set expandtab
-set softtabstop=4
-set ts=4
-set sw=4
+set softtabstop=2
+set ts=2
+set sw=2
+set autoindent
+set smartindent
+set smarttab
 set colorcolumn=80
+" Highlight current line
+set cursorline
 
-" For NerdTree
+" set spelllang=en
+" set spell
+
 " map <C-n> :NERDTree<CR>
 " Open NerdTree on startup. 
 " autocmd vimenter * NERDTree
