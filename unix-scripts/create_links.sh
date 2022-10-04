@@ -20,7 +20,8 @@ if [ ! -f "$HOME/.vimrc" ]; then
 fi
 mkdir -p "$HOME/.conf/nvim" 2>/dev/null
 if [ ! -f "$HOME/.conf/init.vim" ]; then
-	ln -s "$SCRIPT_DIR/../vim/init.vim" "$HOME/.conf/nvim/init.vim"
+	ln -s "$SCRIPT_DIR/../vim/.config/nvim/init.vim" "$HOME/.conf/nvim/init.vim"
+	ln -s "$SCRIPT_DIR/../vim/.config/nvim/lua" "$HOME/.conf/nvim/lua"
 fi
 
 # For proxy
