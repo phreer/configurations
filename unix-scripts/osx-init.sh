@@ -1,4 +1,5 @@
 alias ll="ls -alf"
+alias grep="grep --color"
 export CLICOLOR=1
 
 export DYLD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
