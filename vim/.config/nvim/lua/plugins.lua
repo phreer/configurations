@@ -9,7 +9,7 @@ function in_vscode()
 end
 
 function not_in_vscode()
-  return not in_vscode()
+  return true
 end
 
 return require('packer').startup(function(use)
@@ -23,34 +23,29 @@ return require('packer').startup(function(use)
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     config = function() require'nvim-tree'.setup {} end,
-    cond = not_in_vscode
   }
 
   -- for tabbar
   use {
     'romgrk/barbar.nvim',
     requires = {'kyazdani42/nvim-web-devicons'},
-    cond = not_in_vscode
   }
 
   -- for status line
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    cond = not_in_vscode
   }
 
   -- for fuzzy file searching
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} },
-    cond = not_in_vscode
   }
 
   -- toggleterm.vim for internal terminal window
   use {
     "akinsho/toggleterm.nvim",
-    cond = not_in_vscode
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
