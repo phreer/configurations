@@ -49,7 +49,7 @@ if is_wsl; then
 fi
 export TERM=screen-256color
 export PATH=$PATH:$HOME/local/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib:$HOME/local/lib64 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib:$HOME/local/lib64:$HOME/local/lib/x86_64-linux-gnu
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors -b)"
 alias ls='ls $LS_OPTIONS'

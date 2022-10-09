@@ -3,7 +3,7 @@ SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
 # For bash
 OS=$(uname)
-if [ "$OS" = "Linux"]; then
+if [ "$OS" = "Linux" ]; then
 	INIT_FILENAME="linux-init.sh"
 elif [ "$OS" = "Darwin" ]; then
 	INIT_FILENAME="osx-init.sh"
@@ -18,10 +18,11 @@ fi
 if [ ! -f "$HOME/.vimrc" ]; then
 	ln -s "$SCRIPT_DIR/../vim/.vimrc" "$HOME/.vimrc"
 fi
-mkdir -p "$HOME/.conf/nvim" 2>/dev/null
-if [ ! -f "$HOME/.conf/init.vim" ]; then
-	ln -s "$SCRIPT_DIR/../vim/.config/nvim/init.vim" "$HOME/.conf/nvim/init.vim"
-	ln -s "$SCRIPT_DIR/../vim/.config/nvim/lua" "$HOME/.conf/nvim/lua"
+
+if [ -f "$HOME/.config/nvim" ]; then
+	echo "Directory $HOME/.config/nvim already exists. Skip to link."
+else
+	ln -s "$SCRIPT_DIR"/../vim/.config/nvim "$HOME"/.config/nvim
 fi
 
 # For proxy
