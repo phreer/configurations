@@ -2,7 +2,7 @@ local vim_map = vim.api.nvim_set_keymap
 
 
 -- empty setup using defaults: add your own options
-require'nvim-tree'.setup {
+require('nvim-tree').setup {
 }
 
 require('lualine').setup {
