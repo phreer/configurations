@@ -28,8 +28,7 @@ fi
 if [ -f "$HOME/.config/nvim" ]; then
 	echo "Directory $HOME/.config/nvim already exists. Skip to link."
 else
-	mkdir -p "$HOME"/.config/nvim -p 2>/dev/null
-	ln -s "$SCRIPT_DIR"/../vim/.config/nvim "$HOME"/.config/nvim
+	ln -s "$SCRIPT_DIR"/../vim/.config/nvim "$HOME"/.config/
 fi
 
 # For proxy
