@@ -48,6 +48,8 @@ return require('packer').startup(function(use)
     "akinsho/toggleterm.nvim",
   }
 
+  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
