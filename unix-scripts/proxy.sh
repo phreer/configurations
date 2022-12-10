@@ -5,7 +5,7 @@ enable_proxy(){
         printf "enable_proxy(): invalid argument count (%d)" $# 2>&2
     fi
     if [ $# -eq 0 ]; then
-        if grep -i "microsoft" /proc/version; then
+        if grep -i "microsoft" /proc/version >/dev/null; then
             hostip=$(cat /etc/resolv.conf | grep nameserver | cut -d' ' -f2)
             port=10801
         else
