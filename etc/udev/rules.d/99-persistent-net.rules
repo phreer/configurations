@@ -1,0 +1,5 @@
+# Keep a persistent name for NICs.
+# From https://askubuntu.com/questions/1192463/how-to-fix-ethernet-interface-name
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:25:69:62:r3:c1", ATTR{type}=="1", NAME="eth1"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:25:69:62:r3:c2", ATTR{type}=="1", NAME="eth0"
+
