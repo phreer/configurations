@@ -32,4 +32,4 @@ vim_map('n', '<C-n>', ':NvimTreeToggle<CR>', map_options_ns)
 require('barbar_setting')
 require('telescope_setting')
 require('nvim-lspconfig_setting')
-
+require('nvim-cmp_setting')
