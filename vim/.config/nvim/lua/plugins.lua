@@ -56,11 +56,24 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'   -- { name = 'buffer' },
   use 'hrsh7th/cmp-path'     -- { name = 'path' }
   use 'hrsh7th/cmp-cmdline'  -- { name = 'cmdline' }
+
   -- vsnip
   use 'hrsh7th/cmp-vsnip'    -- { name = 'vsnip' }
   use 'hrsh7th/vim-vsnip'
   use 'rafamadriz/friendly-snippets'
   use 'hrsh7th/nvim-cmp' -- Autocompletion
+
+  -- Git integration
+  use 'f-person/git-blame.nvim'
+
+  -- Add GitHub like theme
+  use 'projekt0n/github-nvim-theme'
+
+  -- For outline
+  use 'simrat39/symbols-outline.nvim'
+
+  -- For treesitter
+  
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -68,4 +81,3 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-

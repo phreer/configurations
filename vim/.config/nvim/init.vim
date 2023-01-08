@@ -10,6 +10,14 @@ lua require('plugins')
 " My personal configurations in lua.
 lua require('phree_init')
 
+if exists("g:neovide")
+  " Put anything you want to happen only in Neovide here
+	let g:neovide_scale_factor = 1.5
+	" set lines=50
+  " set columns=120
+  let g:neovide_remember_window_size = v:true
+endif
+
 " Load project specific vim setting
 set secure
 set exrc
