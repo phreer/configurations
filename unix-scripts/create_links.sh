@@ -22,6 +22,8 @@ fi
 # For vim and neovim
 if [ ! -f "$HOME/.vimrc" ]; then
 	ln -s "$SCRIPT_DIR/../vim/.vimrc" "$HOME/.vimrc"
+else
+  echo "File $HOME/.vimrc already exists. Skip to link."
 fi
 
 if [ -f "$HOME/.config/nvim" ]; then
@@ -30,6 +32,11 @@ else
 	ln -s "$SCRIPT_DIR"/../vim/.config/nvim "$HOME"/.config/
 fi
 
+if [ -f "$HOME/.config/tmux" ]; then
+	echo "Directory $HOME/.config/tmux already exists. Skip to link."
+else
+	ln -s "$SCRIPT_DIR"/../vim/.config/tmux "$HOME"/.config/
+fi
 # For proxy
 [ ! -f "$HOME/proxy.sh" ] && ln -s "$SCRIPT_DIR/proxy.sh" "$HOME/proxy.sh"
 
@@ -38,6 +45,6 @@ SSH_CONFIG_FILE="$PREFIX"-config
 if [ ! -f "$HOME"/.ssh/config ]; then
 	ln -s "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
 else
-	echo "File " "$HOME"/.ssh/config "existed. Skip to link." 
+	echo "File $HOME/.ssh/config already existed. Skip to link." 
 fi
 
