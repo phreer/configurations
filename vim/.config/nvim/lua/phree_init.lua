@@ -34,5 +34,9 @@ require('telescope_setting')
 require('nvim-lspconfig_setting')
 require('nvim-cmp_setting')
 require('gitblame_setting')
-require('github-nvim-theme_setting')
 require('symbols-outline_setting')
+
+-- Setup theme
+ require('github-nvim-theme_setting')
+-- require('nord-theme_setting')
+-- require('zephyr-nvim-theme_setting')

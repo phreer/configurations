@@ -66,8 +66,13 @@ return require('packer').startup(function(use)
   -- Git integration
   use 'f-person/git-blame.nvim'
 
-  -- Add GitHub like theme
+  -- Themes
   use 'projekt0n/github-nvim-theme'
+  use 'shaunsingh/nord.nvim'
+  use({
+    'glepnir/zephyr-nvim',
+    requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
+  })
 
   -- For outline
   use 'simrat39/symbols-outline.nvim'
