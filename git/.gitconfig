@@ -1,0 +1,18 @@
+[user]
+	name = Weifeng Liu
+	email = liu.wf@outlook.com
+[credential]
+	helper = /home/phree/local/bin/git-credential-manager
+	credentialStore = gpg
+[alias]
+	st = status
+[merge]
+	tool = meld
+[mergetool "meld"]
+	# Choose one of these 2 lines (not both!) explained below.
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+	# cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[core]
+	quotepath = false
