@@ -1,14 +1,13 @@
 set nocompatible              " be iMproved, required
 
 set nu
-set autoindent
-set expandtab
 set softtabstop=2
 set ts=2
 set sw=2
 set autoindent
 set smartindent
 set smarttab
+set expandtab
 set colorcolumn=80
 " Highlight current line
 set cursorline

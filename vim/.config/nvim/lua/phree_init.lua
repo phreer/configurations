@@ -28,6 +28,8 @@ require('gitblame_setting')
 require('symbols-outline_setting')
 
 -- Setup theme
- require('github-nvim-theme_setting')
+-- require('github-nvim-theme_setting')
 -- require('nord-theme_setting')
--- require('zephyr-nvim-theme_setting')
+require('zephyr-nvim-theme_setting')
+
+ require('nvim-treesitter_setting')

@@ -78,6 +78,10 @@ return require('packer').startup(function(use)
   use 'simrat39/symbols-outline.nvim'
 
   -- For treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
   
 
   -- Automatically set up your configuration after cloning packer.nvim
