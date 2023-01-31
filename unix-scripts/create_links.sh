@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
+mkdir -p "$HOME"/local/bin 2>/dev/null
+
 # For bash
 OS=$(uname)
 if [ "$OS" = "Linux" ]; then
@@ -42,3 +44,4 @@ CreateSymbolicLink "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/.vimrc
 CreateSymbolicLink "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
 CreateSymbolicLink "$SCRIPT_DIR"/../git/.gitconfig "$HOME"/.gitconfig
 CreateSymbolicLink "$SCRIPT_DIR"/proxy.sh "$HOME"/proxy.sh
+CreateSymbolicLink "$SCRIPT_DIR"/smart-pinentry.sh "$HOME"/local/bin/pinentry
