@@ -13,38 +13,32 @@ else
 fi
 
 INIT_FILENAME="$PREFIX""-init.sh"
+SSH_CONFIG_FILE="$PREFIX"-config
 
-if [ ! -f "$HOME/init.sh" ]; then
-	ln -s "$SCRIPT_DIR/$INIT_FILENAME" "$HOME/init.sh"
-	echo ". $HOME/init.sh" >> "$HOME/.bashrc"
+function CreateSymbolicLink() {
+  local target=$1
+  local link_pos=$2
+  if [ -f "$link_pos" ]; then
+    echo 'Trying to link ['"$target"'] to ['"$link_pos"'], but '"$link_pos"' exists already.'
+  else
+    ln -s "$target" "$link_pos"
+  fi
+}
+
+CreateSymbolicLink "$SCRIPT_DIR/$INIT_FILENAME" "$HOME/init.sh"
+source_command1=". $HOME/init.sh"
+source_command2="source $HOME/init.sh"
+source_command1='. $HOME/init.sh'
+source_command2='source $HOME/init.sh'
+if ! grep -E "$source_command"\|"$alt_source_command" "$HOME"/.bashrc >/dev/null; then
+  echo Add command "$source_command1" to "$HOME"/.bashrc
+	echo $source_command1 >> "$HOME"/.bashrc
 fi
 
 # For vim and neovim
-if [ ! -f "$HOME/.vimrc" ]; then
-	ln -s "$SCRIPT_DIR/../vim/.vimrc" "$HOME/.vimrc"
-else
-  echo "File $HOME/.vimrc already exists. Skip to link."
-fi
-
-if [ -f "$HOME/.config/nvim" ]; then
-	echo "Directory $HOME/.config/nvim already exists. Skip to link."
-else
-	ln -s "$SCRIPT_DIR"/../vim/.config/nvim "$HOME"/.config/
-fi
-
-if [ -f "$HOME/.config/tmux" ]; then
-	echo "Directory $HOME/.config/tmux already exists. Skip to link."
-else
-	ln -s "$SCRIPT_DIR"/../vim/.config/tmux "$HOME"/.config/
-fi
-# For proxy
-[ ! -f "$HOME/proxy.sh" ] && ln -s "$SCRIPT_DIR/proxy.sh" "$HOME/proxy.sh"
-
-# For SSH configuration
-SSH_CONFIG_FILE="$PREFIX"-config
-if [ ! -f "$HOME"/.ssh/config ]; then
-	ln -s "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
-else
-	echo "File $HOME/.ssh/config already existed. Skip to link." 
-fi
-
+CreateSymbolicLink "$SCRIPT_DIR"/../vim/.config/nvim "$HOME"/.config/
+CreateSymbolicLink "$SCRIPT_DIR"/../vim/.config/tmux "$HOME"/.config/
+CreateSymbolicLink "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/.vimrc
+CreateSymbolicLink "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
+CreateSymbolicLink "$SCRIPT_DIR"/../git/.gitconfig "$HOME"/.gitconfig
+CreateSymbolicLink "$SCRIPT_DIR"/proxy.sh "$HOME"/proxy.sh
