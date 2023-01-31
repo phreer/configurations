@@ -16,3 +16,5 @@
 	useHttpPath = true
 [core]
 	quotepath = false
+[credential "https://gitee.com"]
+	provider = generic
