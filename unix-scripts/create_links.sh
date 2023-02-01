@@ -23,7 +23,7 @@ function CreateSymbolicLink() {
   if [ -f "$link_pos" ]; then
     echo 'Trying to link ['"$target"'] to ['"$link_pos"'], but '"$link_pos"' exists already.'
   else
-    ln -s "$target" "$link_pos"
+    ln -s "$target" "$link_pos" && echo 'Link ['"$target"'] to ['"$link_pos"']'
   fi
 }
 
@@ -38,6 +38,8 @@ if ! grep -E "$source_command"\|"$alt_source_command" "$HOME"/.bashrc >/dev/null
 fi
 
 # For vim and neovim
+CreateSymbolicLink "$SCRIPT_DIR"/../clash/config.yaml "$HOME"/.config/clash/config.yaml
+CreateSymbolicLink "$SCRIPT_DIR"/../clash/ruleset "$HOME"/.config/clash/ruleset
 CreateSymbolicLink "$SCRIPT_DIR"/../vim/.config/nvim "$HOME"/.config/
 CreateSymbolicLink "$SCRIPT_DIR"/../vim/.config/tmux "$HOME"/.config/
 CreateSymbolicLink "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/.vimrc
