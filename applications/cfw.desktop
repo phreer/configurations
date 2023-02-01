@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Clash for Windows
+Terminal=false
+Exec="/home/phree/programs/Clash for Windows-0.19.20-x64-linux/cfw"
+Encoding=UTF-8

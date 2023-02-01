@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=QQ Music
+Terminal=false
+Exec=bash -c "/home/phree/programs/qqmusic.AppImage --no-sandbox"
+Icon=/home/phree/Pictures/icons/qqmusic.png
+Encoding=UTF-8
+X-GNOME-SingleWindow=true
+Categories=Music
