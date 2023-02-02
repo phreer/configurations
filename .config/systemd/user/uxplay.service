@@ -1,0 +1,10 @@
+[Unit]
+Description=uxplay daemon
+
+[Service]
+ExecStart=uxplay
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

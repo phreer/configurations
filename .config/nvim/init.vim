@@ -10,6 +10,11 @@ lua require('plugins')
 " My personal configurations in lua.
 lua require('phree_init')
 
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+" Disable folding at startup.
+set nofoldenable
+
 if exists("g:neovide")
   " Put anything you want to happen only in Neovide here
 	let g:neovide_scale_factor = 1.5

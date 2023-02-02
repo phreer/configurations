@@ -32,4 +32,5 @@ require('symbols-outline_setting')
 -- require('nord-theme_setting')
 require('zephyr-nvim-theme_setting')
 
- require('nvim-treesitter_setting')
+require('nvim-treesitter_setting')
+require('orgmode_setting')
