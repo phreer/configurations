@@ -16,5 +16,6 @@
 	useHttpPath = true
 [core]
 	quotepath = false
+	editor = nvim
 [credential "https://gitee.com"]
 	provider = generic
