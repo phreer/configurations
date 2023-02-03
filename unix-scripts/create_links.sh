@@ -43,7 +43,7 @@ if ! grep -E "$source_command"\|"$alt_source_command" "$HOME"/.bashrc >/dev/null
 fi
 
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/ruleset
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/nvim "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/emacs "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/tmux "$HOME"/.config/
