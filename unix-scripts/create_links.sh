@@ -29,6 +29,7 @@ function CreateSymbolicLink() {
 }
 
 mkdir -p "$HOME"/.config/clash 2>/dev/null
+mkdir -p "$HOME"/.config/fontconfig/conf.d 2>/dev/null
 mkdir -p "$HOME"/.ssh 2>/dev/null
 mkdir -p "$HOME"/local/bin 2>/dev/null
 
@@ -42,15 +43,20 @@ if ! grep -E "$source_command"\|"$alt_source_command" "$HOME"/.bashrc >/dev/null
   echo $source_command1 >> "$HOME"/.bashrc
 fi
 
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
+# Link directory
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/nvim "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/emacs "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/tmux "$HOME"/.config/
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/alacritty "$HOME"/.config/
+# Only link some files
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
+    "$HOME"/.config/fontconfig/conf.d/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/.vimrc
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../git/.gitconfig "$HOME"/.gitconfig
-CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"/proxy.sh
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../git/.gitconfig "$HOME"
+CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"
 CreateSymbolicLink 1 "$SCRIPT_DIR"/smart-pinentry.sh "$HOME"/local/bin/pinentry
 
 cp "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service "$HOME"/.config/systemd/user/uxplay.service
