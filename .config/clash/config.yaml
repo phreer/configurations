@@ -1,8 +1,7 @@
 mixed-port: 7890
 allow-lan: true
-external-controller: 127.0.0.1:41723
+external-controller: 127.0.0.1:43689
 secret: cb5e5aa3-e8be-4eea-9bc7-bdb8746c2c39
-
 
 # Will be ignored after profile selection
 proxies:

@@ -50,7 +50,6 @@ CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/tmux "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/alacritty "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share/fonts/
 # Only link some files
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
     "$HOME"/.config/fontconfig/conf.d/
@@ -59,6 +58,8 @@ CreateSymbolicLink 1 "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../git/.gitconfig "$HOME"
 CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"
 CreateSymbolicLink 1 "$SCRIPT_DIR"/smart-pinentry.sh "$HOME"/local/bin/pinentry
+
+cp "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
 
 cp "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service "$HOME"/.config/systemd/user/uxplay.service
 echo "Run systemctl enable --user uxplay.service to enable uxplay"
