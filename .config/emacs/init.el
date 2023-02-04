@@ -1,6 +1,23 @@
 (add-hook 'org-mode-hook 
 	  (lambda () (setq fill-column 100)))
 
+(global-display-line-numbers-mode)
+(global-tab-line-mode t)
+(tab-bar-mode t)
+
+(setq-default show-trailing-whitespace t)
+;; show matching parentheses
+(show-paren-mode t)
+(set-face-attribute 'default nil :height 100)
+
+(load-theme 'deeper-blue t)
+
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
+(global-set-key (kbd "C-c C-y") 'clipboard-yank)
+(set-face-attribute 'default nil :height 120)
+
 ;; Config for ivy
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
@@ -26,7 +43,6 @@
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
 ;; Config for projectile
-(projectile-pmode)
 (require 'projectile)
 ;; Recommended keymap prefix on macOS
 ;; (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
@@ -39,6 +55,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(deeper-blue))
+ '(package-selected-packages '(company org markdown-mode htmlize projectile counsel))
  '(warning-suppress-log-types '((comp) (comp) (comp) (comp) (comp)))
  '(warning-suppress-types '((comp) (comp) (comp) (comp))))
 (custom-set-faces
@@ -47,3 +65,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-hook 'after-init-hook 'global-company-mode)
