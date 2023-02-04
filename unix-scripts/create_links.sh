@@ -48,6 +48,7 @@ CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/nvim "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/emacs "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/tmux "$HOME"/.config/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/alacritty "$HOME"/.config/
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share/fonts/
 # Only link some files
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
