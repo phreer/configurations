@@ -1,1 +1,0 @@
-("~/configurations/" "~/workspace/Notes/")
