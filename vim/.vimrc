@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 
+set relativenumber
 set nu
 set softtabstop=2
 set ts=2
