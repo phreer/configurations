@@ -1,3 +1,25 @@
+(require 'package)
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+
+;; (add-to-list 'package-archives
+;;             '("melpa" . "https://melpa.org/packages/"))
+;; Evil mode
+
+(package-initialize)
+(package-refresh-contents)
+
+;; Download Evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+;; Enable Evil
+(require 'evil)
+(evil-mode 1)
+
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
@@ -11,20 +33,11 @@
 (setq-default show-trailing-whitespace t)
 ;; show matching parentheses
 (show-paren-mode t)
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 120)
 
 (load-theme 'deeper-blue t)
 
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-
 (global-set-key (kbd "C-c C-c C-y") 'clipboard-yank)
-(set-face-attribute 'default nil :height 120)
-
 
 ;; Config for projectile
 (require 'projectile)
@@ -41,7 +54,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(deeper-blue))
  '(package-selected-packages
-   '(org-roam company org markdown-mode htmlize projectile counsel))
+   '(evil org-roam company org markdown-mode htmlize projectile counsel))
  '(warning-suppress-log-types '((comp) (comp) (comp) (comp) (comp)))
  '(warning-suppress-types '((comp) (comp) (comp) (comp))))
 (custom-set-faces
@@ -52,6 +65,7 @@
  )
 
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'text-mode-hook (lambda () flyspell-mode 1))
 
 ;; Org-mode setting
 (setq org-insert-mode-line-in-empty-file t)
@@ -61,7 +75,6 @@
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
-
 
 ;; Org-roam setting
 ;; (make-directory "~/workspace/Notes/org-roam")
