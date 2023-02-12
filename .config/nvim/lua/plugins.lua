@@ -41,15 +41,35 @@ return require('packer').startup(function(use)
   -- for fuzzy file searching
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} },
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-telescope/telescope-live-grep-args.nvim' }
+    },
   }
 
-  -- toggleterm.vim for internal terminal window
   use {
-    "akinsho/toggleterm.nvim",
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
   }
-
+  -- toggleterm.vim for internal terminal window
+  use "akinsho/toggleterm.nvim"
+  
+  -- LSP config
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+        require("lspsaga").setup({})
+    end,
+    requires = { {"nvim-tree/nvim-web-devicons"} }
+  })
 
   -- For autocompletion setting
   use 'hrsh7th/cmp-nvim-lsp' -- { name = nvim_lsp }
@@ -73,6 +93,7 @@ return require('packer').startup(function(use)
     'glepnir/zephyr-nvim',
     requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
   })
+  use { "ellisonleao/gruvbox.nvim" }
 
   -- For outline
   use 'simrat39/symbols-outline.nvim'
@@ -82,11 +103,18 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use 'nvim-treesitter/nvim-treesitter-context'
   
-  use {'nvim-orgmode/orgmode', config = function()
-    require('orgmode').setup{}
-  end
+  use "lukas-reineke/indent-blankline.nvim"
+
+  use {
+    'nvim-orgmode/orgmode',
+    config = function()
+      require('orgmode').setup{}
+    end
   }
+
+  use 'MattesGroeger/vim-bookmarks'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

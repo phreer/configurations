@@ -20,9 +20,11 @@ local opt = require("toggleterm").setup({
     direction = 'horizontal',
 })
 
+require('project_setting')
 require('barbar_setting')
 require('telescope_setting')
 require('nvim-lspconfig_setting')
+require('lspsaga_setting')
 require('nvim-cmp_setting')
 require('gitblame_setting')
 require('symbols-outline_setting')
@@ -30,7 +32,21 @@ require('symbols-outline_setting')
 -- Setup theme
 -- require('github-nvim-theme_setting')
 -- require('nord-theme_setting')
-require('zephyr-nvim-theme_setting')
+-- require('zephyr-nvim-theme_setting')
+require('gruvbox_setting')
 
 require('nvim-treesitter_setting')
 require('orgmode_setting')
+
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+}
+
+
+-- Bookmark setting
+vim_map('n', '<leader>ma', ':BookmarkAnnotate<CR>', map_options_ns)
+vim_map('n', '<leader>mt', ':BookmarkToggle<CR>', map_options_ns)
+vim_map('n', '<leader>ms', ':BookmarkShowAll<CR>', map_options_ns)
+vim_map('n', '<leader>mc', ':BookmarkClear<CR>', map_options_ns)
