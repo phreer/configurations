@@ -1,3 +1,4 @@
+require('lspsaga').setup()
 local keymap = vim.keymap.set
 
 -- LSP finder - Find the symbol's definition
