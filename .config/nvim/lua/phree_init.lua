@@ -7,6 +7,7 @@ require('nvim-tree').setup {
 -- ns for noremap and silent
 local map_options_ns = {noremap = true, silent = true}
 vim_map('n', '<C-n>', ':NvimTreeToggle<CR>', map_options_ns)
+vim_map('n', '<M-n>', ':NvimTreeFindFileToggle<CR>', map_options_ns)
 
 require('lualine').setup {
   options = {
@@ -15,9 +16,9 @@ require('lualine').setup {
 }
 
 local opt = require("toggleterm").setup({
-    open_mapping = [[<Leader>t]],
-    start_in_insert = true,
-    direction = 'horizontal',
+  open_mapping = [[<Leader>t]],
+  start_in_insert = true,
+  direction = 'horizontal',
 })
 
 require('project_setting')
@@ -28,6 +29,7 @@ require('lspsaga_setting')
 require('nvim-cmp_setting')
 require('gitblame_setting')
 require('symbols-outline_setting')
+require("nvim-ufo_setting")
 
 -- Setup theme
 -- require('github-nvim-theme_setting')
@@ -39,11 +41,10 @@ require('nvim-treesitter_setting')
 require('orgmode_setting')
 
 require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    show_current_context_start = true,
+  -- for example, context is off by default, use this to turn it on
+  show_current_context = true,
+  show_current_context_start = true,
 }
-
 
 -- Bookmark setting
 vim_map('n', '<leader>ma', ':BookmarkAnnotate<CR>', map_options_ns)

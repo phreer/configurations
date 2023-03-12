@@ -9,7 +9,7 @@ function in_vscode()
 end
 
 function not_in_vscode()
-  return true
+  return not in_vscode()
 end
 
 return require('packer').startup(function(use)
@@ -116,6 +116,12 @@ return require('packer').startup(function(use)
 
   use 'MattesGroeger/vim-bookmarks'
 
+  -- Modern folding style
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+  use { 'fgheng/winbar.nvim' }
+  use { 'zefei/vim-wintabs' }
+  use { 'zefei/vim-wintabs-powerline' }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

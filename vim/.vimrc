@@ -9,10 +9,11 @@ set autoindent
 set smartindent
 set smarttab
 set expandtab
+set hidden
 set colorcolumn=80
 " Highlight current line
 set cursorline
-
+set foldlevel=99
 " set spelllang=en
 " set spell
 
@@ -27,6 +28,8 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
+" Use Ctrl-s to save file
+inoremap <C-s> <Esc>:w<CR>a
 cnoremap <C-h> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
@@ -34,9 +37,10 @@ cnoremap <C-l> <Right>
 
 set mouse=a
 if !has("nvim")
-if has("mouse_sgr")
+  if has("mouse_sgr")
     set ttymouse=sgr
-else
+  else
     set ttymouse=xterm2
-end
+  end
+  source ~/.vim/plugin.vim
 end

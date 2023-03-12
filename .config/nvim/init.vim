@@ -12,6 +12,7 @@ lua require('phree_init')
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set foldlevel=99
 " Disable folding at startup.
 set nofoldenable
 
@@ -22,6 +23,16 @@ if exists("g:neovide")
   " set columns=120
   let g:neovide_remember_window_size = v:true
 endif
+
+map <C-H> <Plug>(wintabs_previous)
+map <C-L> <Plug>(wintabs_next)
+map <C-T>c <Plug>(wintabs_close)
+map <C-T>u <Plug>(wintabs_undo)
+map <C-T>o <Plug>(wintabs_only)
+map <C-W>c <Plug>(wintabs_close_window)
+map <C-W>o <Plug>(wintabs_only_window)
+command! Tabc WintabsCloseVimtab
+command! Tabo WintabsOnlyVimtab
 
 " Load project specific vim setting
 set secure
