@@ -1,0 +1,16 @@
+#!/bin/bash
+
+usage="Usage: $0 <source> <destination>"
+if [ "$#" -ne 2 ]; then
+  echo $usage >&2
+  exit 1
+fi
+
+filename=$(basename $1)
+if [ -e "$2" ]; then
+  destination="$2"/"$filename"
+else
+  destination=$2
+fi
+mv "$1" "$2"
+ln -sr "$destination" "$1"
