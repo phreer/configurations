@@ -12,19 +12,18 @@
 (package-initialize)
 (package-refresh-contents)
 
-;; Download Evil
-(unless (package-installed-p 'evil)
-  (package-install 'evil))
-
-;; Enable Evil
-(require 'evil)
-(evil-mode 1)
-
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   ;; (add-to-list 'load-path "~/.config/emacs")
   (require 'use-package))
+
+;; Download Evil
+(use-package evil
+  :ensure t
+  :config
+  (require 'evil)
+  (evil-mode 1))
 
 (global-display-line-numbers-mode)
 (global-tab-line-mode t)
@@ -38,14 +37,17 @@
 (load-theme 'deeper-blue t)
 
 (global-set-key (kbd "C-c C-c C-y") 'clipboard-yank)
-
-;; Config for projectile
-(require 'projectile)
-;; Recommended keymap prefix on macOS
-;; (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-;; Recommended keymap prefix on Windows/Linux
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(projectile-mode +1)
+(use-package projectile
+  :ensure t
+  :config
+  ;; Config for projectile
+  (require 'projectile)
+  ;; Recommended keymap prefix on macOS
+  ;; (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  ;; Recommended keymap prefix on Windows/Linux
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1)
+)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -54,7 +56,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(deeper-blue))
  '(package-selected-packages
-   '(evil org-roam company org markdown-mode htmlize projectile counsel))
+   '(orderless evil org-roam company org markdown-mode htmlize projectile counsel))
  '(warning-suppress-log-types '((comp) (comp) (comp) (comp) (comp)))
  '(warning-suppress-types '((comp) (comp) (comp) (comp))))
 (custom-set-faces
@@ -63,6 +65,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
 
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'text-mode-hook (lambda () flyspell-mode 1))
@@ -78,12 +81,16 @@
 
 ;; Org-roam setting
 ;; (make-directory "~/workspace/Notes/org-roam")
-(setq org-roam-directory (file-truename "~/workspace/Notes/org-roam"))
-(org-roam-db-autosync-mode)
-(put 'narrow-to-region 'disabled nil)
-
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-directory (file-truename "~/workspace/Notes/org-roam"))
+  (org-roam-db-autosync-mode)
+  (put 'narrow-to-region 'disabled nil)
+)
 ;; Enable vertico
 (use-package vertico
+  :ensure t
   :init
   (vertico-mode)
 
@@ -102,11 +109,13 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
+  :ensure t
   :init
   (savehist-mode))
 
 ;; A few more useful configurations...
 (use-package emacs
+  :ensure t
   :init
   ;; Add prompt indicator to `completing-read-multiple'.
   ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
@@ -134,6 +143,7 @@
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
+  :ensure t
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
