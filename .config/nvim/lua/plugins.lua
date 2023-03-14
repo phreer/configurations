@@ -47,16 +47,7 @@ return require('packer').startup(function(use)
     },
   }
 
-  use {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
+  use { "ahmedkhalf/project.nvim" }
   -- toggleterm.vim for internal terminal window
   use "akinsho/toggleterm.nvim"
   
@@ -119,9 +110,10 @@ return require('packer').startup(function(use)
   -- Modern folding style
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
-  use { 'fgheng/winbar.nvim' }
-  use { 'zefei/vim-wintabs' }
-  use { 'zefei/vim-wintabs-powerline' }
+  -- use { 'fgheng/winbar.nvim' }
+  -- use { 'zefei/vim-wintabs' }
+  -- use { 'zefei/vim-wintabs-powerline' }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

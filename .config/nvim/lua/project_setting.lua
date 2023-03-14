@@ -38,3 +38,7 @@ require('project_nvim').setup({
   -- telescope
   datapath = vim.fn.stdpath("data"),
 })
+
+require('telescope').load_extension('projects')
+local extensions = require('telescope').extensions
+vim.keymap.set('n', '<leader>fp', extensions.projects.projects, {})

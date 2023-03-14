@@ -10,9 +10,9 @@ vim_map('n', '<C-n>', ':NvimTreeToggle<CR>', map_options_ns)
 vim_map('n', '<M-n>', ':NvimTreeFindFileToggle<CR>', map_options_ns)
 
 require('lualine').setup {
-  options = {
-    theme = 'onedark',
-  }
+  -- options = {
+  --   theme = 'onedark',
+  -- }
 }
 
 local opt = require("toggleterm").setup({
@@ -21,9 +21,9 @@ local opt = require("toggleterm").setup({
   direction = 'horizontal',
 })
 
-require('project_setting')
 require('barbar_setting')
 require('telescope_setting')
+require('project_setting')
 require('nvim-lspconfig_setting')
 require('lspsaga_setting')
 require('nvim-cmp_setting')
