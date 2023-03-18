@@ -7,10 +7,14 @@ if [ "$#" -ne 2 ]; then
 fi
 
 filename=$(basename $1)
-if [ -e "$2" ]; then
+if [ -d "$2" ]; then
   destination="$2"/"$filename"
+elif [ -e "$2" -o "${2: -1}" != "/" ]; then
+  destination="$2"
 else
-  destination=$2
+  mkdir -p $2
+  destination="$2"/"$filename"
 fi
-mv "$1" "$2"
+
+mv "$1" "$destination"
 ln -sr "$destination" "$1"
