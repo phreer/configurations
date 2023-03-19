@@ -10,7 +10,7 @@
 ;; Evil mode
 
 (package-initialize)
-(package-refresh-contents)
+;; (package-refresh-contents)
 
 ;; This is only needed once, near the top of the file
 (eval-when-compile
