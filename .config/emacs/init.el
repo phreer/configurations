@@ -11,7 +11,7 @@
 
 (tool-bar-mode -1)
 
-(global-display-line-numbers-mode)
+(global-display-line-numbers-mode t)
 (global-tab-line-mode t)
 (setq tab-line-separator ">")
 ;; tab color settings
@@ -94,11 +94,17 @@
 ;; Org-mode setting
 (setq org-insert-mode-line-in-empty-file t)
 (add-hook 'org-mode-hook
-	  (lambda () (setq fill-column 100)))
+	  (lambda () (setq fill-column 70)))
 
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
+
+(use-package org-download
+  :ensure t
+  :init
+  (add-hook 'dired-mode-hook 'org-download-enable)
+)
 
 ;; Org-roam setting
 ;; (make-directory "~/workspace/Notes/org-roam")
@@ -173,31 +179,12 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(global-display-line-numbers-mode t)
- '(package-selected-packages
-   '(rg orderless vertico org-roam projectile evil use-package))
- '(tab-bar-mode t))
+(epa-file-enable)
 
 (when (eq system-type 'windows-nt)
   (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
    '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 102 :width normal)))))
 )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 102 :width normal)))))
 
 ;; keybinding for tabline
 (global-set-key (kbd "M-,") 'tab-line-switch-to-prev-tab)
@@ -209,3 +196,16 @@
 ;;                  evil-insert-state-map
 ;;                  evil-emacs-state-map))
 ;;     (define-key (eval map) "M-." nil)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(rg markdown-mode htmlize vertico use-package projectile org-roam org-download orderless evil)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
