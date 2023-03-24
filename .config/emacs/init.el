@@ -1,3 +1,36 @@
+(when (eq system-type 'windows-nt)
+  (setenv "PATH" (concat
+		  ;; "c:/Windows/System32" ";"
+                 "c:/tools/msys64/usr/bin" ";"
+                 ;; Unix tools
+                 ;; User binary files
+                 (getenv "PATH")
+		 ))
+  (setq exec-path (append exec-path '("c:/tools/msys64/usr/bin")))
+  )
+
+(tool-bar-mode -1)
+
+(global-display-line-numbers-mode)
+(global-tab-line-mode t)
+(setq tab-line-separator ">")
+;; tab color settings
+(set-face-attribute 'tab-line nil ;; background behind tabs
+      :background "gray40"
+      :foreground "gray60" :distant-foreground "gray50"
+      :height 1.0 :box nil)
+(set-face-attribute 'tab-line-tab nil ;; active tab in another window
+      :inherit 'tab-line
+      :foreground "gray70" :background "gray90" :box nil)
+(set-face-attribute 'tab-line-tab-current nil ;; active tab in current window
+      :background "royalblue4" :foreground "white" :box nil)
+(set-face-attribute 'tab-line-tab-inactive nil ;; inactive tab
+      :background "gray60" :foreground "black" :box nil)
+(set-face-attribute 'tab-line-highlight nil ;; mouseover
+      :background "white" :foreground 'unspecified)
+
+(tab-bar-mode t)
+
 (require 'package)
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
@@ -21,15 +54,16 @@
 ;; Download Evil
 (use-package evil
   :ensure t
+  :bind (
+	 (:map evil-normal-state-map ("M-." . nil))
+	 (:map evil-insert-state-map ("M-." . nil))
+	)
   :config
   (require 'evil)
   (evil-mode 1))
 
-(global-display-line-numbers-mode)
-(global-tab-line-mode t)
-(tab-bar-mode t)
-
 (setq-default show-trailing-whitespace t)
+
 ;; show matching parentheses
 (show-paren-mode t)
 (set-face-attribute 'default nil :height 120)
@@ -37,6 +71,10 @@
 (load-theme 'deeper-blue t)
 
 (global-set-key (kbd "C-c C-c C-y") 'clipboard-yank)
+(use-package rg
+  :ensure t
+)
+
 (use-package projectile
   :ensure t
   :config
@@ -49,7 +87,8 @@
   (projectile-mode +1)
 )
 
-
+(when (eq system-type 'windows-nt)
+  (setq ispell-program-name "aspell.exe"))
 (add-hook 'text-mode-hook (lambda () flyspell-mode 1))
 
 ;; Org-mode setting
@@ -133,3 +172,40 @@
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(global-display-line-numbers-mode t)
+ '(package-selected-packages
+   '(rg orderless vertico org-roam projectile evil use-package))
+ '(tab-bar-mode t))
+
+(when (eq system-type 'windows-nt)
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 102 :width normal)))))
+)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 102 :width normal)))))
+
+;; keybinding for tabline
+(global-set-key (kbd "M-,") 'tab-line-switch-to-prev-tab)
+(global-set-key (kbd "M-.") 'tab-line-switch-to-next-tab)
+
+;; (eval-after-load "evil-maps"
+;;   (dolist (map '(evil-motion-state-map
+;;                  evil-normal-state-map
+;;                  evil-insert-state-map
+;;                  evil-emacs-state-map))
+;;     (define-key (eval map) "M-." nil)))
