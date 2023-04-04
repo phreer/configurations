@@ -54,6 +54,7 @@ CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clas
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
     "$HOME"/.config/fontconfig/conf.d/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/.vimrc
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"/.vim
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../git/.gitconfig "$HOME"
 CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"
