@@ -9,6 +9,12 @@
   (setq exec-path (append exec-path '("c:/tools/msys64/usr/bin")))
   )
 
+(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (set-fill-column 72)))
+
 (tool-bar-mode -1)
 
 (global-display-line-numbers-mode t)
@@ -28,6 +34,7 @@
       :background "gray60" :foreground "black" :box nil)
 (set-face-attribute 'tab-line-highlight nil ;; mouseover
       :background "white" :foreground 'unspecified)
+
 
 (tab-bar-mode t)
 
@@ -51,16 +58,16 @@
   ;; (add-to-list 'load-path "~/.config/emacs")
   (require 'use-package))
 
-;; Download Evil
-(use-package evil
-  :ensure t
-  :bind (
-	 (:map evil-normal-state-map ("M-." . nil))
-	 (:map evil-insert-state-map ("M-." . nil))
-	)
-  :config
-  (require 'evil)
-  (evil-mode 1))
+;; Using Evil mode
+;; (use-package evil
+;;   :ensure t
+;;   :bind (
+;; 	 (:map evil-normal-state-map ("M-." . nil))
+;; 	 (:map evil-insert-state-map ("M-." . nil))
+;; 	)
+;;   :config
+;;   (require 'evil)
+;;   (evil-mode 1))
 
 (setq-default show-trailing-whitespace t)
 
@@ -183,8 +190,18 @@
 
 (when (eq system-type 'windows-nt)
   (custom-set-faces
-   '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 102 :width normal)))))
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 
 ;; keybinding for tabline
 (global-set-key (kbd "M-,") 'tab-line-switch-to-prev-tab)
@@ -196,16 +213,3 @@
 ;;                  evil-insert-state-map
 ;;                  evil-emacs-state-map))
 ;;     (define-key (eval map) "M-." nil)))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(rg markdown-mode htmlize vertico use-package projectile org-roam org-download orderless evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
