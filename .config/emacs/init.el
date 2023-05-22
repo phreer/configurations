@@ -9,14 +9,16 @@
   (setq exec-path (append exec-path '("c:/tools/msys64/usr/bin")))
   )
 
+(set-language-environment "UTF-8")
+
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (set-fill-column 72)))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 
 (tool-bar-mode -1)
 
+;; Customize tabline
 (global-display-line-numbers-mode t)
 (global-tab-line-mode t)
 (setq tab-line-separator ">")
@@ -96,12 +98,14 @@
 
 (when (eq system-type 'windows-nt)
   (setq ispell-program-name "aspell.exe"))
-(add-hook 'text-mode-hook (lambda () flyspell-mode 1))
+(add-hook 'org-mode-hook (lambda () flyspell-mode 1))
 
 ;; Org-mode setting
 (setq org-insert-mode-line-in-empty-file t)
 (add-hook 'org-mode-hook
-	  (lambda () (setq fill-column 70)))
+          (lambda () (progn (set-fill-column 72)
+			    (flyspell-mode t)
+			    (flyspell-buffer))))
 
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c a") #'org-agenda)
@@ -187,21 +191,6 @@
         completion-category-overrides '((file (styles partial-completion)))))
 
 (epa-file-enable)
-
-(when (eq system-type 'windows-nt)
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
-)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "JetBrainsMono NF" :foundry "outline" :slant normal :weight normal :height 120 :width normal)))))
 
 ;; keybinding for tabline
 (global-set-key (kbd "M-,") 'tab-line-switch-to-prev-tab)
