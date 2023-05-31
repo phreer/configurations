@@ -125,7 +125,14 @@
   (setq org-roam-directory (file-truename "~/workspace/Notes/org-roam"))
   (org-roam-db-autosync-mode)
   (put 'narrow-to-region 'disabled nil)
-)
+  )
+
+;; Enable markdown-mode
+(use-package markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown"))
+
 ;; Enable vertico
 (use-package vertico
   :ensure t
