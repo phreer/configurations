@@ -1,8 +1,8 @@
 [user]
 	name = Weifeng Liu
-	email = weifeng.liu.z@outlook.com
+	email = iphreeliu@gmail.com
 [credential]
-	helper = /home/phree/local/bin/git-credential-manager
+	helper = gopass
 	credentialStore = gpg
 [alias]
 	st = status
