@@ -34,10 +34,12 @@ disable_proxy(){
 }
 
 show_proxy(){
-	echo http_proxy=${http_proxy}
-	echo https_proxy=${https_proxy}
-	echo HTTPS_PROXY=${HTTPS_PROXY}
-	echo HTTP_PROXY=${HTTP_PROXY}
+    echo http_proxy=${http_proxy}
+    echo https_proxy=${https_proxy}
+    echo all_proxy=${all_proxy}
+    echo HTTP_PROXY=${HTTP_PROXY}
+    echo HTTPS_PROXY=${HTTPS_PROXY}
+    echo ALL_PROXY=${ALL_PROXY}
 }
 
 show_help(){
@@ -49,14 +51,14 @@ show_help(){
 }
 
 if [ "$1" = "enable" ]; then
-	enable_proxy $2 $3
+    enable_proxy $2 $3
 elif [ "$1" = "disable" ]; then
-	disable_proxy
+    disable_proxy
 elif [ "$1" = "show" ]; then
-	show_proxy
+    show_proxy
 elif [ "$1" = "help" ]; then
     show_help
 else
-	echo "Invalid argument: $1" 1>&2
+    echo "Invalid argument: $1" 1>&2
     show_help 1>&2
 fi
