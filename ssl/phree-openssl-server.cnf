@@ -1,0 +1,54 @@
+HOME            = .
+RANDFILE        = $ENV::HOME/.rnd
+SERVER_NAME     = __SERVER_NAME__ # To be replaced
+
+####################################################################
+[ req ]
+default_bits       = 2048
+default_keyfile    = phree_${SERVER_NAME}_key.pem
+distinguished_name = req_distinguished_name
+req_extensions     = server_req_extensions
+string_mask        = utf8only
+
+####################################################################
+[ req_distinguished_name ]
+countryName         = Country Name (2 letter code)
+countryName_default = CN
+
+stateOrProvinceName         = State or Province Name (full name)
+stateOrProvinceName_default = Shanghai
+
+localityName         = Locality Name (eg, city)
+localityName_default = Shanghai
+
+organizationName            = Organization Name (eg, company)
+organizationName_default    = $SERVER_NAME
+
+commonName           = Common Name (e.g. server FQDN or YOUR name)
+commonName_default   = $SERVER_NAME
+
+emailAddress         = Email Address
+emailAddress_default = iphreeliu@gmail.com
+
+####################################################################
+[ server_req_extensions ]
+
+subjectKeyIdentifier = hash
+basicConstraints     = CA:FALSE
+keyUsage             = digitalSignature, keyEncipherment
+subjectAltName       = @alternate_names
+nsComment            = "OpenSSL Generated Certificate"
+
+####################################################################
+[ alternate_names ]
+
+DNS.1  = phreer.me
+DNS.2  = www.phreer.me
+DNS.3  = mail.phreer.me
+DNS.4  = ftp.phreer.me
+DNS.5  = phreestation.local
+DNS.6  = phreestation
+IP.1   = 139.196.11.73
+IP.2   = 127.0.0.1
+IP.3   = ::1
+IP.4   = 192.168.5.224
