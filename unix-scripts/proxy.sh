@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set +x
 enable_proxy(){
     if [ $# -ne 0 -a $# -ne 2 ]; then
@@ -16,21 +17,21 @@ enable_proxy(){
         port=$2
     fi
     PROXY_URL=http://$hostip:$port
-	export http_proxy=$PROXY_URL
-	export https_proxy=$PROXY_URL
-	export all_proxy=$PROXY_URL
-	export HTTP_PROXY=$PROXY_URL
-	export HTTPS_PROXY=$PROXY_URL
-	export ALL_PROXY=$PROXY_URL
+    export http_proxy=$PROXY_URL
+    export https_proxy=$PROXY_URL
+    export all_proxy=$PROXY_URL
+    export HTTP_PROXY=$PROXY_URL
+    export HTTPS_PROXY=$PROXY_URL
+    export ALL_PROXY=$PROXY_URL
 }
 
 disable_proxy(){
-	export http_proxy=
-	export https_proxy=
-	export all_proxy=
-	export HTTP_PROXY=
-	export HTTPS_PROXY=
-	export ALL_PROXY=
+    unset http_proxy
+    unset https_proxy
+    unset all_proxy
+    unset HTTP_PROXY
+    unset HTTPS_PROXY
+    unset ALL_PROXY
 }
 
 show_proxy(){
