@@ -2,13 +2,16 @@ set nocompatible              " be iMproved, required
 
 set relativenumber
 set nu
+
+set ts=8 " aka tabstop
 set softtabstop=2
-set ts=2
 set sw=2
+set noexpandtab
+
 set autoindent
 set smartindent
 set smarttab
-set expandtab
+
 set hidden
 set colorcolumn=80
 " Highlight current line
