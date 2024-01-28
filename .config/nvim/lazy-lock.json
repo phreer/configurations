@@ -1,0 +1,12 @@
+{
+  "barbar.nvim": { "branch": "master", "commit": "4ba9ac54f0c5d82131905160afff94172e3325e6" },
+  "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
+  "gruvbox.nvim": { "branch": "main", "commit": "4176b0b720db0c90ab4030e5c1b4893faf41fd51" },
+  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
+  "lualine.nvim": { "branch": "master", "commit": "566b7036f717f3d676362742630518a47f132fff" },
+  "nvim-tree.lua": { "branch": "master", "commit": "b8c3a23e76f861d5f0ff3f6714b9b56388984d0b" },
+  "nvim-web-devicons": { "branch": "master", "commit": "db0c864375c198cacc171ff373e76bfce2a85045" },
+  "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
+  "telescope-live-grep-args.nvim": { "branch": "master", "commit": "731a046da7dd3adff9de871a42f9b7fb85f60f47" },
+  "telescope.nvim": { "branch": "master", "commit": "da8b3d485975a8727bea127518b65c980521ae22" }
+}

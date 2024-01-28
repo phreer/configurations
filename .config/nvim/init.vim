@@ -6,9 +6,7 @@ source ~/.vimrc
 
 let g:vimsyn_embed = 'lPr'
 " For plug-ins manager packer.
-lua require('plugins')
-" My personal configurations in lua.
-lua require('phree_init')
+lua require('lazy_init')
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
@@ -18,8 +16,8 @@ set nofoldenable
 
 if exists("g:neovide")
   " Put anything you want to happen only in Neovide here
-	let g:neovide_scale_factor = 1.5
-	" set lines=50
+  let g:neovide_scale_factor = 1.5
+  " set lines=50
   " set columns=120
   let g:neovide_remember_window_size = v:true
 endif
