@@ -4,8 +4,8 @@ set relativenumber
 set nu
 
 set ts=8 " aka tabstop
-set softtabstop=2
-set sw=2
+set sts=2 " aka softtabstop
+set sw=2 " aka shiftwidth
 set noexpandtab
 
 set autoindent
