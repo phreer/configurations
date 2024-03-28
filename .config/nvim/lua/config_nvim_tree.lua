@@ -9,6 +9,7 @@ return function()
     -- default mappings
     api.config.mappings.default_on_attach(bufnr)
   end
+
   require'nvim-tree'.setup {
     on_attach = set_nvim_tree_mapping
   }

@@ -12,9 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- =========
-  -- nvim-tree
-  -- =========
+  -- =============
+  --   nvim-tree
+  -- =============
   {
     'kyazdani42/nvim-tree.lua',
     dependencies = {
@@ -22,17 +22,17 @@ require("lazy").setup({
     },
     config = require('config_nvim_tree'),
   },
-  -- ======
-  -- barbar
-  -- ======
+  -- ==========
+  --   barbar
+  -- ==========
   {
     'romgrk/barbar.nvim',
     dependencies = {'kyazdani42/nvim-web-devicons'},
     config = require('config_barbar')
   },
-  -- =========
-  -- telesocpe
-  -- =========
+  -- =============
+  --   telesocpe
+  -- =============
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -44,7 +44,15 @@ require("lazy").setup({
   -- ==============
   --   Completion
   -- ==============
+  'hrsh7th/cmp-nvim-lsp', -- { name = nvim_lsp }
+  'hrsh7th/cmp-buffer',   -- { name = 'buffer' },
   'hrsh7th/cmp-path',     -- { name = 'path' }
+  'hrsh7th/cmp-cmdline',  -- { name = 'cmdline' }
+  'hrsh7th/cmp-path',     -- { name = 'path' }
+  {
+    'hrsh7th/nvim-cmp', -- Autocompletion
+    config = require('config_nvim_cmp'),
+  },
   -- =========
   --   Theme
   -- =========
@@ -53,5 +61,13 @@ require("lazy").setup({
     dependencies = { 'kyazdani42/nvim-web-devicons' },
   },
   { "ellisonleao/gruvbox.nvim", config = function() vim.cmd("colorscheme gruvbox") end },
+  -- ========================
+  --   Modern folding style
+  -- ========================
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async',
+    config = require('config_nvim_ufo'),
+  },
 })
 

@@ -63,6 +63,7 @@ require('packer').startup(function(use)
   })
 
   -- For autocompletion setting
+  use 'hrsh7th/nvim-cmp' -- Autocompletion
   use 'hrsh7th/cmp-nvim-lsp' -- { name = nvim_lsp }
   use 'hrsh7th/cmp-buffer'   -- { name = 'buffer' },
   use 'hrsh7th/cmp-path'     -- { name = 'path' }
@@ -72,7 +73,6 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'    -- { name = 'vsnip' }
   use 'hrsh7th/vim-vsnip'
   use 'rafamadriz/friendly-snippets'
-  use 'hrsh7th/nvim-cmp' -- Autocompletion
 
   -- Git integration
   use 'f-person/git-blame.nvim'
