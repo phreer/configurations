@@ -69,5 +69,42 @@ require("lazy").setup({
     dependencies = 'kevinhwang91/promise-async',
     config = require('config_nvim_ufo'),
   },
+  {
+    'f-person/git-blame.nvim',
+    config = function()
+      require('gitblame')
+    end,
+  },
+  -- =======
+  --   LSP
+  -- =======
+  'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+  {
+    "glepnir/lspsaga.nvim",
+    config = require('config_lspsaga'),
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require("ibl").setup()
+    end,
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
+  'simrat39/symbols-outline.nvim',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ":TSUpdate",
+    config = require('config_treesitter'),
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = require('config_treesitter-context'),
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
+  {
+    'mhartington/formatter.nvim',
+    config = require('config_formatter'),
+  },
 })
 
