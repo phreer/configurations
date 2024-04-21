@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
 mkdir -p "$HOME"/local/bin 2>/dev/null
@@ -48,7 +48,7 @@ mkdir -p "$HOME"/.local/share/fonts 2>/dev/null
 CreateSymbolicLink 1 "$SCRIPT_DIR/$INIT_FILENAME" "$HOME/init.sh"
 source_command1='. $HOME/init.sh'
 source_command2='source $HOME/init.sh'
-if ! grep -E "$source_command1"\|"$source_command2" "$HOME"/.bashrc >/dev/null; then
+if ! grep -e "$source_command1" -e "$source_command2" "$HOME"/.bashrc >/dev/null; then
   echo Add command "$source_command1" to "$HOME"/.bashrc
   echo $source_command1 >> "$HOME"/.bashrc
 fi
