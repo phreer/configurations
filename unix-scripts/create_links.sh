@@ -64,8 +64,8 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
     "$HOME"/.config/fontconfig/conf.d/
-CreateSymbolicLink 0 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/.vimrc
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"/.vim
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"
 CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"
 CreateSymbolicLink 1 "$SCRIPT_DIR"/smart-pinentry.sh "$HOME"/local/bin/pinentry
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service \
