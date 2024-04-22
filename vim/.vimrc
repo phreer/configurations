@@ -47,3 +47,5 @@ if !has("nvim")
   end
   source ~/.vim/plugin.vim
 end
+
+setlocal spell spelllang=en_us
