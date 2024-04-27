@@ -1,4 +1,4 @@
-source $HOME/linux-init-common.sh
+source $HOME/init-common.sh
 
 # Initialize command prompt
 export PS1="%n@%m:%~%# "

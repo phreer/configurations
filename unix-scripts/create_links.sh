@@ -47,9 +47,9 @@ mkdir -p "$HOME"/local/bin 2>/dev/null
 mkdir -p "$HOME"/.local/share/fonts 2>/dev/null
 
 # Setup init scripts for bash and zsh
-CreateSymbolicLink 1 "$SCRIPT_DIR/linux-init-common.sh" "$HOME"
-CreateSymbolicLink 1 "$SCRIPT_DIR/$BASHRC" "$HOME"
-CreateSymbolicLink 1 "$SCRIPT_DIR/$ZSHRC" "$HOME"
+CreateSymbolicLink 1 "$SCRIPT_DIR/linux-init-common.sh" "$HOME"/init-common.sh
+CreateSymbolicLink 1 "$SCRIPT_DIR/$BASHRC" "$HOME"/init.sh
+CreateSymbolicLink 1 "$SCRIPT_DIR/$ZSHRC" "$HOME"/init.zsh
 
 # Add `source $HOME/init.sh` to .bashrc if not exists
 SOURCE_COMMAND1='source $HOME/init.sh'
@@ -62,7 +62,7 @@ fi
 
 SOURCE_COMMAND1='source $HOME/init.zsh'
 SOURCE_COMMAND2='. $HOME/init.zsh'
-target_file="$HOME"/.zshrc
+TARGET_FILE="$HOME"/.zshrc
 if ! grep -e "$SOURCE_COMMAND1" -e "$SOURCE_COMMAND2" "$TARGET_FILE" >/dev/null; then
   echo Add command "$SOURCE_COMMAND1" to "$TARGET_FILE"
   echo $SOURCE_COMMAND1 >> "$TARGET_FILE"
