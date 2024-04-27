@@ -1,3 +1,5 @@
+source $HOME/linux-init-common.sh
+
 function _fish_collapsed_pwd() {
     local pwd="$1"
     local home="$HOME"
@@ -49,9 +51,3 @@ if is_wsl; then
     export LIBGL_ALWAYS_INDIRECT=1
 fi
 # export TERM=screen-256color
-export PATH=$HOME/local/bin:$PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib:$HOME/local/lib64:$HOME/local/lib/x86_64-linux-gnu
-export LS_OPTIONS='--color=auto'
-eval "$(dircolors -b)"
-alias ls='ls $LS_OPTIONS'
-alias ll='ls -alF'

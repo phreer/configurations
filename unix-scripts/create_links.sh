@@ -6,16 +6,17 @@ mkdir -p "$HOME"/local/bin 2>/dev/null
 # For bash
 OS=$(uname)
 if [ "$OS" = "Linux" ]; then
-  PREFIX=linux
+  OS_PREFIX=linux
 elif [ "$OS" = "Darwin" ]; then
-  prefix=osx
+  OS_PREFIX=osx
 else
   echo "Unsupported OS: " $OS
   exit 1
 fi
 
-INIT_FILENAME="$PREFIX""-init.sh"
-SSH_CONFIG_FILE="$PREFIX"-config
+BASHRC="$OS_PREFIX""-init.sh"
+ZSHRC="$OS_PREFIX""-init.zsh"
+SSH_CONFIG_FILE="$OS_PREFIX"-config
 
 function CopyFileIfNotExist() {
   local src=$1
@@ -45,12 +46,26 @@ mkdir -p "$HOME"/.ssh 2>/dev/null
 mkdir -p "$HOME"/local/bin 2>/dev/null
 mkdir -p "$HOME"/.local/share/fonts 2>/dev/null
 
-CreateSymbolicLink 1 "$SCRIPT_DIR/$INIT_FILENAME" "$HOME/init.sh"
-source_command1='. $HOME/init.sh'
-source_command2='source $HOME/init.sh'
-if ! grep -e "$source_command1" -e "$source_command2" "$HOME"/.bashrc >/dev/null; then
-  echo Add command "$source_command1" to "$HOME"/.bashrc
-  echo $source_command1 >> "$HOME"/.bashrc
+# Setup init scripts for bash and zsh
+CreateSymbolicLink 1 "$SCRIPT_DIR/linux-init-common.sh" "$HOME"
+CreateSymbolicLink 1 "$SCRIPT_DIR/$BASHRC" "$HOME"
+CreateSymbolicLink 1 "$SCRIPT_DIR/$ZSHRC" "$HOME"
+
+# Add `source $HOME/init.sh` to .bashrc if not exists
+SOURCE_COMMAND1='source $HOME/init.sh'
+SOURCE_COMMAND2='. $HOME/init.sh'
+TARGET_FILE="$HOME"/.bashrc
+if ! grep -e "$SOURCE_COMMAND1" -e "$SOURCE_COMMAND2" "$TARGET_FILE" >/dev/null; then
+  echo Add command "$SOURCE_COMMAND1" to "$TARGET_FILE"
+  echo $SOURCE_COMMAND1 >> "$TARGET_FILE"
+fi
+
+SOURCE_COMMAND1='source $HOME/init.zsh'
+SOURCE_COMMAND2='. $HOME/init.zsh'
+target_file="$HOME"/.zshrc
+if ! grep -e "$SOURCE_COMMAND1" -e "$SOURCE_COMMAND2" "$TARGET_FILE" >/dev/null; then
+  echo Add command "$SOURCE_COMMAND1" to "$TARGET_FILE"
+  echo $SOURCE_COMMAND1 >> "$TARGET_FILE"
 fi
 
 # Link directory
