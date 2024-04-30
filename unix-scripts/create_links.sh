@@ -95,6 +95,9 @@ CreateSymbolicLink 1 "$SCRIPT_DIR"/smart-pinentry.sh "$HOME"/local/bin/pinentry
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service \
     "$HOME"/.config/systemd/user/uxplay.service
 
+CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/smart-pinentry.sh "$HOME"/local/bin/pinentry
+CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/mvln "$HOME"/local/bin/
+
 CopyFileIfNotExist "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
 CopyFileIfNotExist "$SCRIPT_DIR"/../git/.gitconfig "$HOME"/.gitconfig
 CopyFileIfNotExist "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
