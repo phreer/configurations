@@ -1,72 +1,81 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
-mkdir -p "$HOME"/local/bin 2>/dev/null
-
 # For bash
 OS=$(uname)
 if [ "$OS" = "Linux" ]; then
-  OS_PREFIX=linux
+  PREFIX_OS=linux
 elif [ "$OS" = "Darwin" ]; then
-  OS_PREFIX=osx
+  PREFIX_OS=osx
 else
   echo "Unsupported OS: " $OS
   exit 1
 fi
 
-BASHRC="$OS_PREFIX""-init.sh"
-ZSHRC="$OS_PREFIX""-init.zsh"
-SSH_CONFIG_FILE="$OS_PREFIX"-config
+SSH_CONFIG_FILE="$PREFIX_OS"-config
 
-function CopyFileIfNotExist() {
+CopyFileIfNotExist() {
   local src=$1
   local dst=$2
   if [ ! -e "$2" ]; then
-    cp "$src" "$dst"
-    echo "Copy [$src] to [$dst]"
+    cp "$src" "$dst" && echo "Copy [$src] to [$dst]"
   else
     echo "File [$dst] exists, skip copying"
   fi
 }
 
-function CreateSymbolicLink() {
+CreateSymbolicLink() {
   local force=$1
   local target=$2
   local link_pos=$3
-  if [ "$force" -eq "0" ]; then
-    ln -s "$target" "$link_pos" && echo 'Link ['"$target"'] to ['"$link_pos"']'
+  local link_dir
+  if [ "${link_pos: -1}" = "/" ]; then
+    link_dir="$link_pos"
+  elif [ -d "${link_pos}" ]; then
+    link_dir="$link_pos"
+  elif [ -e "${link_pos}" ] && [ ! "$force" = "1" ]; then
+    echo "$link_pos is not a directory!" >&2
+    return
   else
-    ln -sf "$target" "$link_pos" && echo 'Link ['"$target"'] to ['"$link_pos"']'
+    link_dir="${link_pos%/*}"
+  fi
+
+  if [ ! -e "$link_pos" ]; then
+    mkdir -p "$link_pos" 2> /dev/null
+  fi
+
+  if [ "$force" -eq "0" ]; then
+    ln -s "$target" "$link_dir"/ && echo 'Link ['"$target"'] to ['"$link_pos"']'
+  else
+    ln -sf "$target" "$link_dir"/ && echo 'Link ['"$target"'] to ['"$link_pos"']'
   fi
 }
 
-mkdir -p "$HOME"/.config/clash 2>/dev/null
-mkdir -p "$HOME"/.config/fontconfig/conf.d 2>/dev/null
-mkdir -p "$HOME"/.ssh 2>/dev/null
-mkdir -p "$HOME"/local/bin 2>/dev/null
-mkdir -p "$HOME"/.local/share/fonts 2>/dev/null
-
 # Setup init scripts for bash and zsh
-CreateSymbolicLink 1 "$SCRIPT_DIR/linux-init-common.sh" "$HOME"/init-common.sh
-CreateSymbolicLink 1 "$SCRIPT_DIR/$BASHRC" "$HOME"/init.sh
-CreateSymbolicLink 1 "$SCRIPT_DIR/$ZSHRC" "$HOME"/init.zsh
+CreateSymbolicLink 1 "$SCRIPT_DIR/init.rc" "$HOME"/
+CreateSymbolicLink 1 "$SCRIPT_DIR/$PREFIX_OS-init.rc" "$HOME"/
 
-# Add `source $HOME/init.sh` to .bashrc if not exists
-SOURCE_COMMAND1='source $HOME/init.sh'
-SOURCE_COMMAND2='. $HOME/init.sh'
-TARGET_FILE="$HOME"/.bashrc
-if ! grep -e "$SOURCE_COMMAND1" -e "$SOURCE_COMMAND2" "$TARGET_FILE" >/dev/null; then
-  echo Add command "$SOURCE_COMMAND1" to "$TARGET_FILE"
-  echo $SOURCE_COMMAND1 >> "$TARGET_FILE"
-fi
+# Add `source $HOME/$PREFIX_OS-init.$SUFFIX_SHELL` to .bashrc/.zshrc if it does
+# not exist
+AddSourceCommand() {
+  local suffix_shell=$1
+  local target_file="$HOME"/$2
+  local source_command1="source \$HOME/$PREFIX_OS-init.$suffix_shell"
+  local source_command2=". \$HOME/$PREFIX_OS-init.$suffix_shell"
+  if ! grep -e "$source_command1" -e "$source_command2" "$target_file" >/dev/null; then
+    echo Add command "$source_command1" to "$target_file"
+    echo $source_command1 >> "$target_file"
+  fi
+}
 
-SOURCE_COMMAND1='source $HOME/init.zsh'
-SOURCE_COMMAND2='. $HOME/init.zsh'
-TARGET_FILE="$HOME"/.zshrc
-if ! grep -e "$SOURCE_COMMAND1" -e "$SOURCE_COMMAND2" "$TARGET_FILE" >/dev/null; then
-  echo Add command "$SOURCE_COMMAND1" to "$TARGET_FILE"
-  echo $SOURCE_COMMAND1 >> "$TARGET_FILE"
-fi
+SUFFIX_SHELLS=( "sh" "zsh" )
+SHELL_RC_FILES=( ".bashrc" ".zshrc" )
+
+for i in `seq 0 $(( ${#SUFFIX_SHELLS[@]} - 1 ))`; do
+  CreateSymbolicLink 1 "$SCRIPT_DIR/init.${SUFFIX_SHELLS[i]}" "$HOME"
+  CreateSymbolicLink 1 "$SCRIPT_DIR/$PREFIX_OS-init.${SUFFIX_SHELLS[i]}" "$HOME"
+  AddSourceCommand ${SUFFIX_SHELLS[$i]} ${SHELL_RC_FILES[$i]}
+done
 
 # Link directory
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/nvim "$HOME"/.config/
@@ -79,9 +88,9 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
     "$HOME"/.config/fontconfig/conf.d/
-CreateSymbolicLink 0 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"
-CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"/
+CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/smart-pinentry.sh "$HOME"/local/bin/pinentry
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service \
     "$HOME"/.config/systemd/user/uxplay.service

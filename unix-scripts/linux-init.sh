@@ -1,46 +1,6 @@
-source $HOME/linux-init-common.sh
-
-function _fish_collapsed_pwd() {
-    local pwd="$1"
-    local home="$HOME"
-    local size=${#home}
-    [[ $# == 0 ]] && pwd="$PWD"
-    [[ -z "$pwd" ]] && return
-    if [[ "$pwd" == "/" ]]; then
-        echo "/"
-        return
-    elif [[ "$pwd" == "$home" ]]; then
-        echo "~"
-        return
-    fi
-    [[ "$pwd" == "$home/"* ]] && pwd="~${pwd:$size}"
-    if [[ -n "$BASH_VERSION" ]]; then
-        local IFS="/"
-        local elements=($pwd)
-        local length=${#elements[@]}
-        for ((i=0;i<length-1;i++)); do
-            local elem=${elements[$i]}
-            if [[ ${#elem} -gt 1 ]]; then
-                elements[$i]=${elem:0:1}
-            fi
-        done
-    else
-        local elements=("${(s:/:)pwd}")
-        local length=${#elements}
-        for i in {1..$((length-1))}; do
-            local elem=${elements[$i]}
-            if [[ ${#elem} > 1 ]]; then
-                elements[$i]=${elem[1]}
-            fi
-        done
-    fi
-    local IFS="/"
-    echo "${elements[*]}"
-}
-
-function is_wsl() {
-    grep -i "microsoft" /proc/version 2>&1 1>/dev/null
-}
+source $HOME/init.rc
+source $HOME/linux-init.rc
+source $HOME/init.sh
 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]$(_fish_collapsed_pwd)\[\033[00m\]\$ '
 
