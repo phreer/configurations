@@ -78,11 +78,21 @@ require("lazy").setup({
   -- =======
   --   LSP
   -- =======
-  'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+  {
+    'neovim/nvim-lspconfig',
+    config = require('config_lspconfig'),
+  },
   {
     "glepnir/lspsaga.nvim",
     config = require('config_lspsaga'),
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+
+  {
+    "FabijanZulj/blame.nvim",
+    config = function()
+      require("blame").setup()
+    end
   },
   {
     'lukas-reineke/indent-blankline.nvim',

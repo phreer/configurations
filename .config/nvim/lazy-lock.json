@@ -1,5 +1,6 @@
 {
   "barbar.nvim": { "branch": "master", "commit": "3c48b5edf61dda21ad41c514e53448fee366a824" },
+  "blame.nvim": { "branch": "main", "commit": "dedbcdce857f708c63f261287ac7491a893912d0" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
@@ -8,7 +9,7 @@
   "git-blame.nvim": { "branch": "master", "commit": "a0282d05adbee80aaf4e2ff35b81b52940b67bed" },
   "gruvbox.nvim": { "branch": "main", "commit": "6e4027ae957cddf7b193adfaec4a8f9e03b4555f" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3d08501caef2329aba5121b753e903904088f7e6" },
-  "lazy.nvim": { "branch": "main", "commit": "e753eb602539bdad9f0709066d5893a788cb5db9" },
+  "lazy.nvim": { "branch": "main", "commit": "fafe1f7c640aed75e70a10e6649612cd96f39149" },
   "lspsaga.nvim": { "branch": "main", "commit": "a4d442896a9ff1f83ee3db965d81b659ebc977d5" },
   "lualine.nvim": { "branch": "master", "commit": "b5e8bb642138f787a2c1c5aedc2a78cb2cebbd67" },
   "nvim-cmp": { "branch": "main", "commit": "97dc716fc914c46577a4f254035ebef1aa72558a" },
