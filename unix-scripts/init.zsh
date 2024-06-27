@@ -1,5 +1,3 @@
-source $HOME/linux-init-common.sh
-
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 # Initialize command prompt

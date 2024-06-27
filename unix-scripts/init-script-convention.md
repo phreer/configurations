@@ -15,8 +15,8 @@ For really common things that are both OS-agnostic and shell-agnostic, we have
 `init.rc`.
 
 ```
-$PREFIX_OS-init.$SUFFIX_SHELL
+${PREFIX_OS}-init.${SUFFIX_SHELL}
   => init.rc
-  => $init-common.$SUFFIX_SHELL
-  => $PREFIX_OS-init-common.rc
+  => init.${SUFFIX_SHELL}
+  => ${PREFIX_OS}-init.rc
 ```
