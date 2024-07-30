@@ -18,6 +18,13 @@ export PS1="%F{blue}%n@%m%f:%F{green}%~%f%# "
 
 bindkey -s '\eo' 'cd ..\n'
 
+# Command history
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+# Share history among sessions
+setopt SHARE_HISTORY
+
 # antigen for plugin management
 if [ -e $HOME/antigen.zsh ]; then
   source $HOME/antigen.zsh
