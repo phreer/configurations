@@ -1,0 +1,9 @@
+Host github.com
+	HostName github.com
+	ServerAliveInterval 55
+	ForwardAgent yes
+	ProxyCommand /usr/bin/corkscrew localhost 7890 %h %p
+
+Host *
+	SendEnv LC_* LANG*
+
