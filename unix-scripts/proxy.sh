@@ -23,6 +23,8 @@ enable_proxy(){
     export HTTP_PROXY=$PROXY_URL
     export HTTPS_PROXY=$PROXY_URL
     export ALL_PROXY=$PROXY_URL
+    export no_proxy="localhost,.local,127.0.0.1,192.168.0.0/16,10.0.0.0/24"
+    export NO_PROXY="$no_proxy"
 }
 
 disable_proxy(){
