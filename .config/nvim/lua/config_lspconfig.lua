@@ -48,7 +48,7 @@ return function()
       on_attach = on_attach,
       flags = lsp_flags,
   }
-  require('lspconfig')['tsserver'].setup{
+  require('lspconfig')['ts_ls'].setup{
       on_attach = on_attach,
       flags = lsp_flags,
   }
