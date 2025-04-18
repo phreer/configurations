@@ -17,6 +17,7 @@ select-word-style bash
 export PS1="%F{blue}%n@%m%f:%F{green}%~%f%# "
 
 bindkey -s '\eo' 'cd ..\n'
+bindkey -e
 
 # Command history
 HISTFILE=$HOME/.zsh_history
