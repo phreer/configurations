@@ -6,7 +6,7 @@ source ~/.vimrc
 
 let g:vimsyn_embed = 'lPr'
 " For plug-ins manager packer.
-lua require('lazy_init')
+lua require('init')
 
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
