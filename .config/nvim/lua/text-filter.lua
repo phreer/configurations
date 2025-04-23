@@ -2,6 +2,11 @@
 local api = vim.api
 local M = {}
 
+-- TODO:
+-- * Add more colors
+-- * Allow use color shortcut, e.g., b for blue
+-- * Save/load patterns to/from file
+
 local color_to_hl_group = {
   green = "TextFilterHighlightGroupGreen",
   blue  = "TextFilterHighlightGroupBlue",
