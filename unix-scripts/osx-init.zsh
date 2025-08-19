@@ -4,6 +4,7 @@ source $HOME/init.zsh
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  fpath=( "$(brew --prefix)/share/zsh/site-functions" $fpath )
 
   autoload -Uz compinit
   compinit
