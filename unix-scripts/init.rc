@@ -37,5 +37,5 @@ function _fish_collapsed_pwd() {
 }
 
 alias ls='ls $LS_OPTIONS'
-alias ll='ls -alF'
+alias ll='ls -alF --color'
 export PATH=$PATH:$HOME/local/bin
