@@ -116,5 +116,8 @@ require("lazy").setup({
     'mhartington/formatter.nvim',
     config = require('config_formatter'),
   },
+  {
+    'github/copilot.vim',
+  },
 })
 
