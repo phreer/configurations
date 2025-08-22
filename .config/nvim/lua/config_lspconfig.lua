@@ -41,8 +41,12 @@ return function()
   }
 
   require('lspconfig')['clangd'].setup{
-      on_attach = on_attach,
-      flags = lsp_flags,
+    on_attach = on_attach,
+    flags = lsp_flags,
+    cmd = {
+      "clangd",
+      "--offset-encoding=utf-16",
+    },
   }
   require('lspconfig')['pyright'].setup{
       on_attach = on_attach,
