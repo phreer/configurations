@@ -1,9 +1,6 @@
 [user]
 	name = Weifeng Liu
 	email = weifeng.liu.z@gmail.com
-[credential]
-	credentialStore = gpg
-	helper = gopass
 [alias]
 	st = status
 [merge]
@@ -21,3 +18,5 @@
 	provider = generic
 [url "https://"]
 	insteadOf = git://
+[include]
+	path = ~/.gitconfig-os

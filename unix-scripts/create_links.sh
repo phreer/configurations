@@ -13,6 +13,7 @@ else
 fi
 
 SSH_CONFIG_FILE="$PREFIX_OS"-config
+GIT_CONFIG_FILE="$PREFIX_OS".gitconfig
 
 CopyFileIfNotExist() {
   local src=$1
@@ -40,8 +41,8 @@ CreateSymbolicLink() {
     link_dir="${link_pos%/*}"
   fi
 
-  if [ ! -e "$link_pos" ]; then
-    mkdir -p "$link_pos" 2> /dev/null
+  if [ ! -e "$link_dir" ]; then
+    mkdir -p "$link_dir" 2> /dev/null
   fi
 
   if [ "$force" -eq "0" ]; then
@@ -98,9 +99,13 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service \
 CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/smart-pinentry.sh "$HOME"/local/bin/pinentry
 CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/mvln "$HOME"/local/bin/
 
-CopyFileIfNotExist "$SCRIPT_DIR"/../.ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
-CopyFileIfNotExist "$SCRIPT_DIR"/../git/.gitconfig "$HOME"/.gitconfig
-CopyFileIfNotExist "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
+# OS specific config
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git/$GIT_CONFIG_FILE "$HOME"/os.gitconfig
+# Generic config
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git/.gitconfig "$HOME"/.gitconfig
+
+# CopyFileIfNotExist "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
 
 echo "Run systemctl enable --user uxplay.service to enable uxplay"
 echo "Run systemctl start --user uxplay.service to start uxplay"
