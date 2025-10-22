@@ -40,28 +40,28 @@ return function()
     debounce_text_changes = 150,
   }
 
-  require('lspconfig')['clangd'].setup{
+  vim.lsp.config('clangd', {
     on_attach = on_attach,
     flags = lsp_flags,
     cmd = {
       "clangd",
       "--offset-encoding=utf-16",
     },
-  }
-  require('lspconfig')['pyright'].setup{
+  })
+  vim.lsp.config('pyright', {
       on_attach = on_attach,
       flags = lsp_flags,
-  }
-  require('lspconfig')['ts_ls'].setup{
+  })
+  vim.lsp.config('ts_ls', {
       on_attach = on_attach,
       flags = lsp_flags,
-  }
-  require('lspconfig')['rust_analyzer'].setup{
+  })
+  vim.lsp.config('rust_analyzer', {
       on_attach = on_attach,
       flags = lsp_flags,
       -- Server-specific settings...
       settings = {
         ["rust-analyzer"] = {}
       }
-  }
+  })
 end
