@@ -49,19 +49,20 @@ return function()
     },
   })
   vim.lsp.config('pyright', {
-      on_attach = on_attach,
-      flags = lsp_flags,
+    on_attach = on_attach,
+    flags = lsp_flags,
   })
   vim.lsp.config('ts_ls', {
-      on_attach = on_attach,
-      flags = lsp_flags,
+    on_attach = on_attach,
+    flags = lsp_flags,
   })
   vim.lsp.config('rust_analyzer', {
-      on_attach = on_attach,
-      flags = lsp_flags,
-      -- Server-specific settings...
-      settings = {
-        ["rust-analyzer"] = {}
-      }
+    on_attach = on_attach,
+    flags = lsp_flags,
+    -- Server-specific settings...
+    settings = {
+      ["rust-analyzer"] = {}
+    }
   })
+  vim.lsp.enable('rust_analyzer')
 end
