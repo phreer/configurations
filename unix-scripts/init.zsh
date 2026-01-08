@@ -2,6 +2,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 load_antigen_bundles() {
   antigen bundle zsh-users/zsh-completions
+  antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle command-not-found
 
@@ -18,6 +19,9 @@ export PS1="%F{blue}%n@%m%f:%F{green}%~%f%# "
 
 bindkey -s '\eo' 'cd ..\n'
 bindkey -e
+
+# Change directory without typing cd
+setopt autocd
 
 # Command history
 HISTFILE=$HOME/.zsh_history
