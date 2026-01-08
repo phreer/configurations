@@ -20,3 +20,5 @@
 	insteadOf = git://
 [include]
 	path = ~/.gitconfig-os
+[color]
+	ui = auto
