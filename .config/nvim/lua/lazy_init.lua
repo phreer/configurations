@@ -60,7 +60,7 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
   },
-  { "ellisonleao/gruvbox.nvim", config = function() vim.cmd("colorscheme gruvbox") end },
+  { "ellisonleao/gruvbox.nvim", config = require('config_gruvbox') },
   -- ========================
   --   Modern folding style
   -- ========================
