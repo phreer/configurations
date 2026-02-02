@@ -15,13 +15,17 @@ fi
 SSH_CONFIG_FILE="$PREFIX_OS"-config
 GIT_CONFIG_FILE="$PREFIX_OS".gitconfig
 
+LogWarning() {
+  echo -e "\033[1;33m[Warning]\033[0m $1"
+}
+
 CopyFileIfNotExist() {
   local src=$1
   local dst=$2
   if [ ! -e "$2" ]; then
     cp "$src" "$dst" && echo "Copy [$src] to [$dst]"
   else
-    echo "File [$dst] exists, skip copying"
+    LogWarning "File [$dst] exists, skip copying"
   fi
 }
 
@@ -35,7 +39,7 @@ CreateSymbolicLink() {
   elif [ -d "${link_pos}" ]; then
     link_dir="$link_pos"
   elif [ -e "${link_pos}" ] && [ ! "$force" = "1" ]; then
-    echo "$link_pos is not a directory!" >&2
+    LogWarning "$link_pos exists and is not a directory!"
     return
   else
     link_dir="${link_pos%/*}"
@@ -63,6 +67,10 @@ AddSourceCommand() {
   local target_file="$HOME"/$2
   local source_command1="source \$HOME/$PREFIX_OS-init.$suffix_shell"
   local source_command2=". \$HOME/$PREFIX_OS-init.$suffix_shell"
+  if [ ! -e "$target_file" ]; then
+    LogWarning "$target_file does not exist, skipping adding source command"
+    return
+  fi
   if ! grep -e "$source_command1" -e "$source_command2" "$target_file" >/dev/null; then
     echo Add command "$source_command1" to "$target_file"
     echo $source_command1 >> "$target_file"
