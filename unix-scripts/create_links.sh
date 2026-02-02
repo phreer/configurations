@@ -100,7 +100,6 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"/
-CreateSymbolicLink 1 "$SCRIPT_DIR"/smart-pinentry.sh "$HOME"/local/bin/pinentry
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service \
     "$HOME"/.config/systemd/user/uxplay.service
 
