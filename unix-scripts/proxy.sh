@@ -20,9 +20,13 @@ enable_proxy(){
     export http_proxy=$PROXY_URL
     export https_proxy=$PROXY_URL
     export all_proxy=$PROXY_URL
+    export ws_proxy=$PROXY_URL
+    export wss_proxy=$PROXY_URL
     export HTTP_PROXY=$PROXY_URL
     export HTTPS_PROXY=$PROXY_URL
     export ALL_PROXY=$PROXY_URL
+    export WS_PROXY=$PROXY_URL
+    export WSS_PROXY=$PROXY_URL
     export no_proxy="localhost,.local,127.0.0.1,192.168.0.0/16,10.0.0.0/24"
     export NO_PROXY="$no_proxy"
 }
@@ -31,9 +35,13 @@ disable_proxy(){
     unset http_proxy
     unset https_proxy
     unset all_proxy
+    unset ws_proxy
+    unset wss_proxy
     unset HTTP_PROXY
     unset HTTPS_PROXY
     unset ALL_PROXY
+    unset WS_PROXY
+    unset WSS_PROXY
 }
 
 show_proxy(){
