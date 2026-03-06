@@ -1,8 +1,8 @@
 require('lazy_init')
 require('text-filter').setup()
 
--- 将系统剪切板与 Neovim 剪切板打通
-vim.opt.clipboard = "unnamedplus"
+-- The following line will enable the system clipboard for all operations (yanking, deleting, changing and putting)
+-- vim.opt.clipboard = "unnamedplus"
 
 if vim.fn.has('nvim-0.10') == 1 then
   vim.g.clipboard = {
