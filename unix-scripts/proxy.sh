@@ -19,11 +19,15 @@ enable_proxy(){
     PROXY_URL=http://$hostip:$port
     export http_proxy=$PROXY_URL
     export https_proxy=$PROXY_URL
+    export ws_proxy=$PROXY_URL
+    export wss_proxy=$PROXY_URL
     export all_proxy=$PROXY_URL
     export ws_proxy=$PROXY_URL
     export wss_proxy=$PROXY_URL
     export HTTP_PROXY=$PROXY_URL
     export HTTPS_PROXY=$PROXY_URL
+    export WS_PROXY=$PROXY_URL
+    export WSS_PROXY=$PROXY_URL
     export ALL_PROXY=$PROXY_URL
     export WS_PROXY=$PROXY_URL
     export WSS_PROXY=$PROXY_URL
