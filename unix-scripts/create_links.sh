@@ -50,9 +50,9 @@ CreateSymbolicLink() {
   fi
 
   if [ "$force" -eq "0" ]; then
-    ln -s "$target" "$link_dir"/ && echo 'Link ['"$target"'] to ['"$link_pos"']'
+    ln -s "$target" "$link_pos" && echo 'Link ['"$target"'] to ['"$link_pos"']'
   else
-    ln -sf "$target" "$link_dir"/ && echo 'Link ['"$target"'] to ['"$link_pos"']'
+    ln -sf "$target" "$link_pos" && echo 'Link ['"$target"'] to ['"$link_pos"']'
   fi
 }
 
@@ -91,6 +91,8 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/nvim "$HOME"/.config/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/emacs "$HOME"/.config/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/tmux "$HOME"/.config/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/alacritty "$HOME"/.config/
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/kitty "$HOME"/.config/
+CreateSymbolicLink 1 "${PREFIX_OS}.conf" "$HOME"/.config/kitty/kitty-local.conf
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share/fonts/
 
 # Only link some files
