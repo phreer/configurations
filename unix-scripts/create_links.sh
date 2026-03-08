@@ -96,6 +96,7 @@ CreateSymbolicLink 1 "${PREFIX_OS}.conf" "$HOME"/.config/kitty/kitty-local.conf
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share/fonts/
 
 # Only link some files
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../GLOBAL_AGENTS.md "$HOME"/AGENTS.md
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
     "$HOME"/.config/fontconfig/conf.d/

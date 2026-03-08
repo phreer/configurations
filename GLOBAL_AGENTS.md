@@ -1,0 +1,21 @@
+# Global AI Agent Instructions
+
+> **CRITICAL FIRST STEP**: Always read `~/.machine_context.md` first to understand the specific OS, architecture, and installed toolchains of the current machine before taking any action.
+
+## 1. System Operations & Maintenance
+- **Keep Context Updated**: If you (the AI) install new system-level tools or update major environments, you MUST proactively update `~/.machine_context.md` to reflect these changes.
+- **Safety First**: NEVER perform destructive operations (e.g., `rm -rf` on user data, dropping databases, overwriting critical configs) without explicitly asking for user confirmation first.
+
+## 2. Git & Version Control Behavior
+- **No Proactive Pushes**: NEVER proactively push code to remote Git repositories unless explicitly instructed by the user.
+- **AI Commit Attribution**: When generating commits, clearly state that the commit was authored by an AI. (e.g., Prefix the commit message with `[AI]` or include a note in the commit body).
+
+## 3. General Preferences
+- Use symbolic links to map configuration files from this repository to their expected system locations.
+- Keep per-machine configurations out of this repository, storing them locally (e.g., in `~/.machine_context.md` or `.local` files) while maintaining global patterns here.
+
+## 4. Coding Preferences
+- **Maintainability & Modularity**: Write maintainable and modular code.
+- **Design First**: Always design the architecture and structure before starting to write code.
+- **Appropriate Commenting**: Add appropriate comments. Do not add chatty or useless comments; only write necessary comments that explain the "why" instead of the "what".
+- **Code Quality**: Write concise, elegant, and intuitive code. Avoid writing obscure or hard-to-understand logic.
