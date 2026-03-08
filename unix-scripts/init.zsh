@@ -23,9 +23,6 @@ bindkey -e
 # Change directory without typing cd
 setopt autocd
 
-[ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh ||
-  { [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh; }
-
 # Command history
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
@@ -38,3 +35,24 @@ if [ -e $HOME/antigen.zsh ]; then
   source $HOME/antigen.zsh
   load_antigen_bundles
 fi
+
+# Source fzf key bindings and completion, use anonymous function to avoid polluting global namespace
+() {
+  if (( $+commands[fzf] )); then
+    local fzf_brew_shell
+    local p
+    local ext
+    (( $+commands[brew] )) && fzf_brew_shell="$(brew --prefix)/opt/fzf/shell"
+
+    for ext in key-bindings.zsh completion.zsh; do
+      for p in "/usr/share/fzf/shell/$ext" \
+                  "/usr/share/doc/fzf/examples/$ext" \
+                  "$fzf_brew_shell/$ext"; do
+        if [[ -f "$p" ]]; then
+          source "$p"
+          break
+        fi
+      done
+    done
+  fi
+}
