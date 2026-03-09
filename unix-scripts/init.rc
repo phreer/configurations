@@ -39,3 +39,13 @@ function _fish_collapsed_pwd() {
 alias ls='ls $LS_OPTIONS'
 alias ll='ls -alF --color'
 export PATH=$PATH:$HOME/local/bin
+
+if command -v nvim >/dev/null 2>&1; then
+    export VISUAL='nvim'
+elif command -v vim >/dev/null 2>&1; then
+    export VISUAL='vim'
+else
+    export VISUAL='nano'
+fi
+export EDITOR="$VISUAL"
+
