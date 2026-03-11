@@ -111,6 +111,8 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/smart-pinentry.sh "$HOME"/local/bin/pi
 CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/mvln "$HOME"/local/bin/
 
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
+
+# Git config
 # OS specific config
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git/$GIT_CONFIG_FILE "$HOME"/os.gitconfig
 # Generic config
