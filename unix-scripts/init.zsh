@@ -15,7 +15,13 @@ autoload -U select-word-style
 select-word-style bash
 
 # Initialize command prompt
-export PS1="%F{blue}%n@%m%f:%F{green}%~%f%# "
+_prompt_shelltag() {
+  if [[ -n "$SHELL_TAG" ]]; then
+    print -n "[%F{yellow}${SHELL_TAG}%f] "
+  fi
+}
+setopt PROMPT_SUBST
+export PS1='$(_prompt_shelltag)%F{blue}%n@%m%f:%F{green}%~%f%# '
 
 bindkey -s '\eo' 'cd ..\n'
 bindkey -e

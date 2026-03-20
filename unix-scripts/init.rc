@@ -36,6 +36,17 @@ function _fish_collapsed_pwd() {
     echo "${elements[*]}"
 }
 
+# Tag the current shell instance with a custom label shown in the prompt.
+# Usage: shelltag <label>   — set tag
+#        shelltag            — clear tag
+function shelltag() {
+  if [[ $# -gt 0 ]]; then
+    export SHELL_TAG="$1"
+  else
+    unset SHELL_TAG
+  fi
+}
+
 alias ls='ls $LS_OPTIONS'
 alias ll='ls -alF --color'
 export PATH=$PATH:$HOME/local/bin
