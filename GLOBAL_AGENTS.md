@@ -1,10 +1,10 @@
 # Global AI Agent Instructions
 
-> **CRITICAL FIRST STEP**: Always read `~/.machine_context.md` first to understand the specific OS, architecture, and installed toolchains of the current machine before taking any action.
+> **CRITICAL FIRST STEP**: Always read `~/.config/opencode/machine_context.md` first to understand the specific OS, architecture, and installed toolchains of the current machine before taking any action.
 
 ## 1. System Operations & Maintenance
-- **Bootstrap Machine Context**: If `~/.machine_context.md` does not exist, try to create it and add basic system information (OS, architecture, shell, and key toolchains if detectable) before proceeding.
-- **Keep Context Updated**: If you (the AI) install new system-level tools or update major environments, you MUST proactively update `~/.machine_context.md` to reflect these changes.
+- **Bootstrap Machine Context**: If `~/.config/opencode/machine_context.md` does not exist, try to create it and add basic system information (OS, architecture, shell, and key toolchains if detectable) before proceeding.
+- **Keep Context Updated**: If you (the AI) install new system-level tools or update major environments, you MUST proactively update `~/.config/opencode/machine_context.md` to reflect these changes.
 - **Safety First**: NEVER perform destructive operations (e.g., `rm -rf` on user data, dropping databases, overwriting critical configs) without explicitly asking for user confirmation first.
 
 ## 2. Git & Version Control Behavior
@@ -14,7 +14,7 @@
 
 ## 3. General Preferences
 - Use symbolic links to map configuration files from this repository to their expected system locations.
-- Keep per-machine configurations out of this repository, storing them locally (e.g., in `~/.machine_context.md` or `.local` files) while maintaining global patterns here.
+- Keep per-machine configurations out of this repository, storing them locally (e.g., in `~/.config/opencode/machine_context.md` or `.local` files) while maintaining global patterns here.
 
 ## 4. Coding Preferences
 - **Maintainability & Modularity**: Write maintainable and modular code.
