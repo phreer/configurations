@@ -48,4 +48,4 @@ if !has("nvim")
   source ~/.vim/plugin.vim
 end
 
-setlocal spell spelllang=en_us
+setlocal spell spelllang=en_us,cjk
