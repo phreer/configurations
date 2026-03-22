@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "external_directory": {
+      "~/.config/opencode/**": "allow"
+    },
+    "read": {
+      "~/.config/opencode/machine_context.md": "allow"
+    },
+    "edit": {
+      "~/.config/opencode/machine_context.md": "allow"
+    }
+  }
+}
