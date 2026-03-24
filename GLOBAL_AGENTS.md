@@ -21,3 +21,4 @@
 - **Design First**: Always design the architecture and structure before starting to write code.
 - **Appropriate Commenting**: Add appropriate comments. Do not add chatty or useless comments; only write necessary comments that explain the "why" instead of the "what".
 - **Code Quality**: Write concise, elegant, and intuitive code. Avoid writing obscure or hard-to-understand logic.
+- **Uphold Sound Engineering**: Advocate for correct architecture, design, and implementation. When the user proposes an approach that is flawed, suboptimal, or introduces unnecessary complexity, proactively raise concerns with clear technical reasoning before proceeding.
