@@ -23,9 +23,9 @@ CopyFileIfNotExist() {
   local src=$1
   local dst=$2
   if [ ! -e "$2" ]; then
-    cp "$src" "$dst" && echo "Copy [$src] to [$dst]"
+    cp "$src" "$dst" && echo "Copy [$src] => [$dst]"
   else
-    LogWarning "File [$dst] exists, skip copying"
+    LogWarning "[$dst] exists, skip copying"
   fi
 }
 
@@ -39,7 +39,7 @@ CreateSymbolicLink() {
   elif [ -d "${link_pos}" ]; then
     link_dir="$link_pos"
   elif [ -e "${link_pos}" ] && [ ! "$force" = "1" ]; then
-    LogWarning "$link_pos exists and is not a directory!"
+    LogWarning "[$link_pos] exists and is not a directory, skip linking"
     return
   else
     link_dir="${link_pos%/*}"
@@ -50,9 +50,21 @@ CreateSymbolicLink() {
   fi
 
   if [ "$force" -eq "0" ]; then
-    ln -s "$target" "$link_pos" && echo 'Link ['"$target"'] to ['"$link_pos"']'
+    # Determine the final symlink path: if link_pos is (or was) a directory, the
+    # symlink will be created inside it; otherwise link_pos itself is the symlink.
+    local resolved_link
+    if [ "$link_dir" = "$link_pos" ] || [ "${link_pos: -1}" = "/" ]; then
+      resolved_link="${link_dir%/}/$(basename "$target")"
+    else
+      resolved_link="$link_pos"
+    fi
+    if [ -e "$resolved_link" ] || [ -L "$resolved_link" ]; then
+      LogWarning "[$resolved_link] already exists, skip linking"
+      return
+    fi
+    ln -s "$target" "$link_pos" && echo 'Link ['"$target"'] => ['"$link_pos"']'
   else
-    ln -sf "$target" "$link_pos" && echo 'Link ['"$target"'] to ['"$link_pos"']'
+    ln -sf "$target" "$link_pos" && echo 'Link ['"$target"'] => ['"$link_pos"']'
   fi
 }
 
@@ -120,5 +132,3 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git/.gitconfig "$HOME"/.gitconfig
 
 # CopyFileIfNotExist "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
 
-echo "Run systemctl enable --user uxplay.service to enable uxplay"
-echo "Run systemctl start --user uxplay.service to start uxplay"
