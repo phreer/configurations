@@ -1,0 +1,7 @@
+services:
+  builder:
+    image: ubuntu-dev
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
