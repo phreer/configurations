@@ -15,6 +15,8 @@
 ## 3. General Preferences
 - Use symbolic links to map configuration files from this repository to their expected system locations.
 - Keep per-machine configurations out of this repository, storing them locally (e.g., in `~/.config/opencode/machine_context.md` or `.local` files) while maintaining global patterns here.
+- **Summarize Commands Run**: In each reply, if any commands were executed, briefly summarize which commands were run.
+- **Headline Style**: Do not add numeric prefixes to headings.
 
 ## 4. Coding Preferences
 - **Maintainability & Modularity**: Write maintainable and modular code.
