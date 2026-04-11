@@ -1,4 +1,4 @@
-My personal scripts and dot files.
+# My personal scripts and dot files.
 
 ## Directory Structure
 
