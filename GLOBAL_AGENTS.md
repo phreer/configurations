@@ -23,6 +23,7 @@
 - **Summarize Meaningful Command Use**: When you execute non-trivial commands, briefly summarize the important commands in the final reply instead of narrating every routine step.
 - **Think Before Doing**: Before taking action, identify unclear points and hidden assumptions. If key details are uncertain, explicitly ask the user and discuss them until the direction is clear.
 - **Use Question Tools for Confirmation**: When user confirmation or a choice is needed, prefer using the available question tool instead of relying only on free-form prose.
+- **Stay Focused on the Task**: During execution, stay focused on the current task. Do not make unrelated changes, avoid opportunistic refactors, and do not reformat code or files unless it is required for the task.
 - **Headline Style**: Do not add numeric prefixes to headings.
 - **Maintainability & Modularity**: Write maintainable and modular code.
 - **Design to Match Scope**: For medium or large changes, design the structure before implementing. For small, localized fixes, prefer the smallest correct change without unnecessary design overhead.
