@@ -52,6 +52,7 @@ fi
 
     for ext in key-bindings.zsh completion.zsh; do
       for p in "/usr/share/fzf/shell/$ext" \
+                  "/usr/share/fzf/$ext" \
                   "/usr/share/doc/fzf/examples/$ext" \
                   "$fzf_brew_shell/$ext"; do
         if [[ -f "$p" ]]; then
