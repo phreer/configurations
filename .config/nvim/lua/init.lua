@@ -17,3 +17,6 @@ if vim.fn.has('nvim-0.10') == 1 then
     },
   }
 end
+
+vim.opt.signcolumn = "yes"
+

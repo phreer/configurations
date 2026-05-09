@@ -120,5 +120,20 @@ require("lazy").setup({
   {
     'github/copilot.vim',
   },
+  {
+    "obsidian-nvim/obsidian.nvim",
+    version = "*", -- use latest release, remove to use latest commit
+    ---@module 'obsidian'
+    ---@type obsidian.config
+    opts = {
+      legacy_commands = false, -- this will be removed in 4.0.0
+      workspaces = {
+        {
+          name = "Notes",
+          path = "~/workspace/Notes/",
+        },
+      },
+    },
+  },
 })
 
