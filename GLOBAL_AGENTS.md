@@ -16,8 +16,12 @@
 
 ## Git Behavior
 - **No Proactive Pushes**: Never push code to remote Git repositories unless the user explicitly asks for it.
+- **No Proactive Commits**: Never create commits unless the user explicitly asks for one.
 - **AI Commit Attribution**: When generating commits, clearly state that the commit was authored by an AI. (e.g., Prefix the commit message with `[AI]` or include a note in the commit body).
+- **Clear Commit Messages**: When generating commit messages, clearly describe the problem the commit solves and the approach used to solve it.
 - **Atomic & Reviewable Commits**: Keep commits atomic and testable. Prefer one logical change per commit so each commit is easier to review.
+- **Protect Worktree Changes**: Never discard, overwrite, reset, or checkout away user changes unless explicitly requested.
+- **Avoid Destructive Git Operations**: Do not run destructive Git commands such as `git reset --hard`, force-push, or amend commits unless the user explicitly requests and understands the impact.
 
 ## Working Style
 - **Summarize Meaningful Command Use**: When you execute non-trivial commands, briefly summarize the important commands in the final reply instead of narrating every routine step.
