@@ -20,6 +20,7 @@
 - **AI Commit Attribution**: When generating commits, clearly state that the commit was authored by an AI. (e.g., Prefix the commit message with `[AI]` or include a note in the commit body).
 - **Clear Commit Messages**: When generating commit messages, clearly describe the problem the commit solves and the approach used to solve it.
 - **Atomic & Reviewable Commits**: Keep commits atomic and testable. Prefer one logical change per commit so each commit is easier to review.
+- **Clean Worktree Before Edits**: Before modifying code, ensure the current worktree is clean. If it is dirty, ask the user how to proceed, such as creating a temporary commit, stashing changes, or continuing directly on the dirty worktree.
 - **Protect Worktree Changes**: Never discard, overwrite, reset, or checkout away user changes unless explicitly requested.
 - **Avoid Destructive Git Operations**: Do not run destructive Git commands such as `git reset --hard`, force-push, or amend commits unless the user explicitly requests and understands the impact.
 
