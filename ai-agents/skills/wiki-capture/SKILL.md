@@ -69,8 +69,10 @@ it. Do not scaffold the vault structure from another repo.
 3. **Pick a slug** (kebab-case, from the topic or the user's argument).
 4. **Write** `$HOME/workspace/Notes/wiki/raw/inbox/<YYYY-MM-DD>-<slug>.md` (resolve
    `$HOME`) using the template below.
-5. **Append a row** to `inbox.md`'s queue table: `⏳` status, date, link to the file,
+5. **Append a row** to `inbox.md`'s queue table: `TODO` status, date, link to the file,
    one-line summary, source repo. Update its `updated:` frontmatter.
+   (Queue statuses: `TODO` = not yet ingested, `DONE` = ingested, `STALE` = a `DONE`
+   source was later edited and needs re-ingesting. Capture always writes `TODO`.)
 6. **Tell the user** it's queued, and that ingest happens later via `/wiki-ingest` in the
    Notes repo. Do NOT attempt ingest from here.
 
@@ -99,7 +101,7 @@ it. Do not scaffold the vault structure from another repo.
 
 ## Completion check
 - [ ] File written under `wiki/raw/inbox/`, self-contained, with full provenance header.
-- [ ] A `⏳` row appended to `inbox.md`; its `updated:` bumped.
+- [ ] A `TODO` row appended to `inbox.md`; its `updated:` bumped.
 - [ ] NO wiki entity/concept/index/log page was touched.
 - [ ] NO `[[wikilink]]` in the captured body (deferred to ingest).
 - [ ] NO file in the source repo was modified.
