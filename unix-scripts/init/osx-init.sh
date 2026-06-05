@@ -1,6 +1,6 @@
-source $HOME/init.rc
-source $HOME/osx-init.rc
-source $HOME/init.sh
+source $__INIT_DIR/init.rc
+source $__INIT_DIR/osx-init.rc
+source $__INIT_DIR/init.sh
 
 alias ll="ls -alf"
 alias grep="grep --color"

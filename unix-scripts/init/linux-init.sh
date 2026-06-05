@@ -1,6 +1,6 @@
-source $HOME/init.rc
-source $HOME/linux-init.rc
-source $HOME/init.sh
+source $__INIT_DIR/init.rc
+source $__INIT_DIR/linux-init.rc
+source $__INIT_DIR/init.sh
 
 # Setup X server display for WSL.
 # But this should be unnecessary with WSLg support.

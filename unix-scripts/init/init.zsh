@@ -37,8 +37,8 @@ SAVEHIST=10000
 setopt SHARE_HISTORY
 
 # antigen for plugin management
-if [ -e $HOME/antigen.zsh ]; then
-  source $HOME/antigen.zsh
+if [ -e $__INIT_DIR/antigen.zsh ]; then
+  source $__INIT_DIR/antigen.zsh
   load_antigen_bundles
 fi
 

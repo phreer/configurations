@@ -1,3 +1,5 @@
+__INIT_DIR=$HOME/.init
+
 function _fish_collapsed_pwd() {
     local pwd="$1"
     local home="$HOME"

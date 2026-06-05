@@ -1,6 +1,6 @@
-source $HOME/init.rc
-source $HOME/osx-init.rc
-source $HOME/init.zsh
+source $__INIT_DIR/init.rc
+source $__INIT_DIR/osx-init.rc
+source $__INIT_DIR/init.zsh
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH

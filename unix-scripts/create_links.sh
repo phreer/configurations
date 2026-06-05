@@ -12,6 +12,7 @@ else
   exit 1
 fi
 
+INIT_DIR=$HOME/.init
 SSH_CONFIG_FILE="$PREFIX_OS"-config
 GIT_CONFIG_FILE="$PREFIX_OS".gitconfig
 
@@ -69,22 +70,22 @@ CreateSymbolicLink() {
 }
 
 # Setup init scripts for bash and zsh
-CreateSymbolicLink 1 "$SCRIPT_DIR/init.rc" "$HOME"/
-CreateSymbolicLink 1 "$SCRIPT_DIR/$PREFIX_OS-init.rc" "$HOME"/
+CreateSymbolicLink 1 "$SCRIPT_DIR/init" "$INIT_DIR"
 
 # Add `source $HOME/$PREFIX_OS-init.$SUFFIX_SHELL` to .bashrc/.zshrc if it does
 # not exist
 AddSourceCommand() {
   local suffix_shell=$1
   local target_file="$HOME"/$2
-  local source_command1="source \$HOME/$PREFIX_OS-init.$suffix_shell"
-  local source_command2=". \$HOME/$PREFIX_OS-init.$suffix_shell"
+  local source_command1="source \$__INIT_DIR/$PREFIX_OS-init.$suffix_shell"
+  local source_command2=". \$__INIT_DIR/$PREFIX_OS-init.$suffix_shell"
   if [ ! -e "$target_file" ]; then
     LogWarning "$target_file does not exist, skipping adding source command"
     return
   fi
   if ! grep -e "$source_command1" -e "$source_command2" "$target_file" >/dev/null; then
     echo Add command "$source_command1" to "$target_file"
+    echo "__INIT_DIR=\$HOME/.init" >> "$target_file"
     echo $source_command1 >> "$target_file"
   fi
 }
@@ -93,8 +94,6 @@ SUFFIX_SHELLS=( "sh" "zsh" )
 SHELL_RC_FILES=( ".bashrc" ".zshrc" )
 
 for i in `seq 0 $(( ${#SUFFIX_SHELLS[@]} - 1 ))`; do
-  CreateSymbolicLink 1 "$SCRIPT_DIR/init.${SUFFIX_SHELLS[i]}" "$HOME"
-  CreateSymbolicLink 1 "$SCRIPT_DIR/$PREFIX_OS-init.${SUFFIX_SHELLS[i]}" "$HOME"
   AddSourceCommand ${SUFFIX_SHELLS[$i]} ${SHELL_RC_FILES[$i]}
 done
 
