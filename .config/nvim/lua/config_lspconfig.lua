@@ -48,6 +48,10 @@ return function()
       "--offset-encoding=utf-16",
     },
   })
+  vim.lsp.config('basedpyright', {
+    on_attach = on_attach,
+    flags = lsp_flags,
+  })
   vim.lsp.config('pyright', {
     on_attach = on_attach,
     flags = lsp_flags,
@@ -65,4 +69,5 @@ return function()
     }
   })
   vim.lsp.enable('rust_analyzer')
+  vim.lsp.enable('basedpyright')
 end
