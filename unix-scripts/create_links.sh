@@ -108,6 +108,7 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share
 
 # Only link some files
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../GLOBAL_AGENTS.md "$HOME"/.config/opencode/AGENTS.md
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../GLOBAL_AGENTS.md "$HOME"/.claude/CLAUDE.md
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/opencode/opencode.json "$HOME"/.config/opencode/
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
