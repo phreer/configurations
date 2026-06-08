@@ -38,19 +38,23 @@ needs wiki context is deferred to `wiki-ingest` back in the Notes repo.
   has none of this conversation. Write the conclusions/code/decisions, not "we discussed X".
 - **Don't fabricate**. If you didn't actually verify a path/commit, say so inline.
 
-## Vault path (absolute)
+## Vault path
 
-The Notes vault lives at `/home/liuweife/workspace/Notes`. The inbox is:
+The Notes vault lives at `$HOME/workspace/Notes` (resolve `$HOME` at runtime — the
+username is NOT fixed, never hardcode an absolute `/home/<user>/...` path). The inbox is:
 
 ```
-/home/liuweife/workspace/Notes/wiki/raw/inbox/
+$HOME/workspace/Notes/wiki/raw/inbox/
 ├── inbox.md            # the queue table (append a row)
 ├── _README.md          # conventions
 └── <YYYY-MM-DD>-<slug>.md   # one file per capture
 ```
 
-If that directory does not exist, the vault may have moved — ask the user for the path
-instead of guessing. Do not create the vault structure from another repo.
+First **resolve and verify** the inbox dir, e.g.:
+`ls "$HOME/workspace/Notes/wiki/raw/inbox" 2>/dev/null`.
+If it does **not** exist, the vault may have moved or this machine differs — **ask the
+user where the Notes vault is** (use the question tool) instead of guessing or creating
+it. Do not scaffold the vault structure from another repo.
 
 ## Procedure
 
@@ -63,8 +67,8 @@ instead of guessing. Do not create the vault structure from another repo.
    - the specific file paths / functions the discussion touched
    - today's date (ask the user or use the known current date; do NOT invent one)
 3. **Pick a slug** (kebab-case, from the topic or the user's argument).
-4. **Write** `/home/liuweife/workspace/Notes/wiki/raw/inbox/<YYYY-MM-DD>-<slug>.md`
-   using the template below.
+4. **Write** `$HOME/workspace/Notes/wiki/raw/inbox/<YYYY-MM-DD>-<slug>.md` (resolve
+   `$HOME`) using the template below.
 5. **Append a row** to `inbox.md`'s queue table: `⏳` status, date, link to the file,
    one-line summary, source repo. Update its `updated:` frontmatter.
 6. **Tell the user** it's queued, and that ingest happens later via `/wiki-ingest` in the
