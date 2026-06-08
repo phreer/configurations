@@ -10,5 +10,27 @@
     "edit": {
       "~/.config/opencode/machine_context.md": "allow"
     }
+  },
+  "provider": {
+    "amazon-bedrock": {
+      "whitelist": [
+        "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+        "us.anthropic.claude-sonnet-4-6",
+        "us.anthropic.claude-opus-4-8",
+        "us.anthropic.claude-opus-4-7",
+        "global.anthropic.claude-opus-4-6-v1",
+        "moonshotai.kimi-k2.5",
+        "minimax.minimax-m2.5",
+        "zai.glm-5",
+        "nvidia.nemotron-nano-12b-v2",
+        "nvidia.nemotron-nano-3-30b",
+        "nvidia.nemotron-nano-9b-v2",
+        "nvidia.nemotron-super-3-120b",
+        "cohere.embed-v4:0",
+        "deepseek.v3.2",
+        "qwen.qwen3-vl-235b-a22b"
+      ]
+    }
   }
 }
