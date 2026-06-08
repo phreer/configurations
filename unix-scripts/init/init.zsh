@@ -63,3 +63,10 @@ fi
     done
   fi
 }
+
+# zoxide: smarter cd that learns frequently used directories.
+# Use `z <keyword>` to jump, `zi` for interactive fzf selection.
+# Must run after compinit (loaded via the zsh-completions antigen bundle).
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
