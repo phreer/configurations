@@ -1,0 +1,14 @@
+# env.d — drop-in shell snippets sourced by init.rc.
+#
+# Each *.env file here is sourced (in alphabetical order) on shell startup.
+# Use plain shell syntax, e.g.:
+#
+#   export FOO=bar
+#   export PATH=$HOME/extra/bin:$PATH
+#
+# Naming:
+#   *.env         committed to the repo, synced across machines (generic config)
+#   *.local.env   git-ignored, for machine-specific or secret values
+#
+# Order with numeric prefixes if it matters: 00-paths.env, 50-tools.env, ...
+# This file itself (no .env suffix) is NOT sourced; it only documents the format.

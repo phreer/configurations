@@ -2,3 +2,4 @@
 *~
 Session.vim
 **/*.zsh.zwc
+unix-scripts/init/env.d/*.local.env
