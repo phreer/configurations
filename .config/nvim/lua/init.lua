@@ -18,5 +18,12 @@ if vim.fn.has('nvim-0.10') == 1 then
   }
 end
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
+
 vim.opt.signcolumn = "yes"
 
