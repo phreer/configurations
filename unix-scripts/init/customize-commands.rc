@@ -1,0 +1,9 @@
+if command -v wdiff >/dev/null 2>&1; then
+    alias wd="wdiff -n \
+  -w $'\033[30;41m' -x $'\033[0m' \
+  -y $'\033[30;42m' -z $'\033[0m'"
+fi
+
+alias ls='ls $LS_OPTIONS'
+alias ll='ls -alF --color'
+
