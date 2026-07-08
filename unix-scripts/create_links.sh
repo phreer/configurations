@@ -111,7 +111,7 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/../fonts/NerdFontSymbols "$HOME"/.local/share
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../GLOBAL_AGENTS.md "$HOME"/.config/opencode/AGENTS.md
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../GLOBAL_AGENTS.md "$HOME"/.claude/CLAUDE.md
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/opencode/opencode.json "$HOME"/.config/opencode/
-mkdir "$HOME"/.claude 2>/dev/null
+mkdir "$HOME"/.claude 2>/dev/null || true
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../ai-agents/skills "$HOME"/.claude/
 
 CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clash/
@@ -127,6 +127,7 @@ CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/smart-pinentry.sh "$HOME"/local/bin/pi
 CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/mvln "$HOME"/local/bin/
 
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
+mkdir "$HOME"/.ssh/conf.d 2>/dev/null || true
 
 # Git config
 # OS specific config
