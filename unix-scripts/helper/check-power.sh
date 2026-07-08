@@ -115,6 +115,27 @@ print_instant_power() {
   [ "$found" -eq 1 ]
 }
 
+show_power_limits() {
+  base=/sys/class/powercap/intel-rapl:0
+  if [ ! -d "$base" ]; then
+    echo "Path $base does not exist, skip"
+    return;
+  fi
+  for i in 0 1 2; do
+    if [ ! -e "$base/constraint_${i}_name" ]; then
+      echo "Path $base/constraint_${i}_name does not exist, skip"
+      return;
+    fi
+    echo "=== constraint_$i ==="
+    cat "$base/constraint_${i}_name"
+    awk '{printf "%.2f W\n", $1/1000000}' "$base/constraint_${i}_power_limit_uw"
+    cat "$base/constraint_${i}_time_window_us" 2>/dev/null || true
+  done
+  return 0
+}
+
+show_power_limits
+
 previous_file=$(make_temp_file previous)
 current_file=$(make_temp_file current)
 trap 'rm -f "$previous_file" "$current_file"' EXIT HUP INT TERM
@@ -129,6 +150,7 @@ fi
 previous_ns=$(now_ns)
 index=0
 
+echo "=== realtime power ==="
 printf 'time\t\tsource\t\twatts\telapsed_s\tpath\n'
 
 while [ "$index" -lt "$count" ]; do
