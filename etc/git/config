@@ -18,9 +18,9 @@
 	provider = generic
 [url "https://"]
 	insteadOf = git://
+[color]
+	ui = auto
 [include]
 	path = ~/.config/git/os.conf
 [include]
 	path = ~/.config/git/local.conf
-[color]
-	ui = auto
