@@ -3,3 +3,5 @@
 Session.vim
 **/*.zsh.zwc
 unix-scripts/init/env.d/*.local.env
+etc/git/os.conf
+etc/git/local.conf
