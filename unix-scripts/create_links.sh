@@ -92,9 +92,9 @@ mkdir "$HOME"/.ssh/conf.d 2>/dev/null || true
 
 # Git config
 # OS specific config
-CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git/$GIT_CONFIG_FILE "$HOME"/os.gitconfig
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git/$GIT_CONFIG_FILE "$SCRIPT_DIR"/../etc/git/os.conf
 # Generic config
-CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git/.gitconfig "$HOME"/.gitconfig
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/git "$HOME"/.config/git
 
 # CopyFileIfNotExist "$SCRIPT_DIR"/../.config/clash/config.yaml "$HOME"/.config/clash/config.yaml
 

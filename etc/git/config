@@ -19,6 +19,8 @@
 [url "https://"]
 	insteadOf = git://
 [include]
-	path = ~/.gitconfig-os
+	path = ~/.config/git/os.conf
+[include]
+	path = ~/.config/git/local.conf
 [color]
 	ui = auto
