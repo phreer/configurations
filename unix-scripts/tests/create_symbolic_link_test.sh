@@ -248,6 +248,43 @@ test_force_one_replaces_existing_directory_at_explicit_path() {
   assert_symlink_points_to "$explicit_link" "$target"
 }
 
+test_force_one_skips_when_target_and_destination_are_same_directory() {
+  local tmp
+  tmp=$(mktemp -d)
+  trap "rm -rf '$tmp'" RETURN
+
+  local same_dir="$tmp/same_dir"
+  mkdir -p "$same_dir"
+
+  warnings=()
+  CreateSymbolicLink 1 "$same_dir" "$same_dir" > /dev/null
+
+  [ -d "$same_dir" ]
+  [ ! -L "$same_dir" ]
+  [ ! -e "$same_dir/same_dir" ]
+  assert_warning_contains "same path, skip linking"
+}
+
+test_force_one_replaces_symlink_to_directory_without_creating_nested_link() {
+  local tmp
+  tmp=$(mktemp -d)
+  trap "rm -rf '$tmp'" RETURN
+
+  local target="$tmp/src/new_file"
+  mkdir -p "$(dirname "$target")"
+  : > "$target"
+
+  local real_dir="$tmp/real_dir"
+  mkdir -p "$real_dir"
+  local explicit_link="$tmp/dir_link"
+  ln -s "$real_dir" "$explicit_link"
+
+  CreateSymbolicLink 1 "$target" "$explicit_link" > /dev/null
+
+  assert_symlink_points_to "$explicit_link" "$target"
+  [ ! -e "$real_dir/new_file" ]
+}
+
 run_test "trailing slash creates inside directory and parents" test_trailing_slash_creates_inside_directory_and_parents
 run_test "force=0 skips existing directory at explicit path" test_force_zero_skips_when_explicit_link_path_is_existing_directory
 run_test "explicit link path creates parent directories" test_explicit_link_path_creates_parent_directories
@@ -258,6 +295,8 @@ run_test "force=0 overwrites when user confirms" test_force_zero_overwrites_exis
 run_test "force=1 replaces existing explicit path" test_force_one_replaces_existing_explicit_path
 run_test "force=1 works in directory mode" test_force_one_handles_directory_mode
 run_test "force=1 replaces existing directory at explicit path" test_force_one_replaces_existing_directory_at_explicit_path
+run_test "force=1 skips self-referential directory link" test_force_one_skips_when_target_and_destination_are_same_directory
+run_test "force=1 replaces symlink-to-dir without nested link" test_force_one_replaces_symlink_to_directory_without_creating_nested_link
 
 if [ "$failures" -gt 0 ]; then
   echo

@@ -1,4 +1,4 @@
-source "$(dirname "$0")/log_utils.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/log_utils.sh"
 
 ShowPathInfo() {
   local path=$1
@@ -26,6 +26,37 @@ ConfirmOverwrite() {
       return 1
       ;;
   esac
+}
+
+ReplaceWithSymlink() {
+  local target=$1
+  local path=$2
+  local resolved_target
+  local resolved_path
+
+  if [ "$target" = "$path" ]; then
+    LogWarning "[$path] and target are the same path, skip linking"
+    return
+  fi
+
+  if { [ -e "$target" ] || [ -L "$target" ]; } && { [ -e "$path" ] || [ -L "$path" ]; }; then
+    resolved_target=$(readlink -f "$target" 2>/dev/null || printf '%s' "$target")
+    resolved_path=$(readlink -f "$path" 2>/dev/null || printf '%s' "$path")
+    if [ "$resolved_target" = "$resolved_path" ]; then
+      LogWarning "[$path] already resolves to target, skip linking"
+      return
+    fi
+  fi
+
+  if [ -L "$path" ]; then
+    rm -f "$path"
+  elif [ -d "$path" ]; then
+    rm -rf "$path"
+  elif [ -e "$path" ]; then
+    rm -f "$path"
+  fi
+
+  ln -s "$target" "$path" && echo 'Link ['"$target"'] => ['"$path"']'
 }
 
 CreateSymbolicLink() {
@@ -60,10 +91,7 @@ CreateSymbolicLink() {
 
       ShowPathInfo "$resolved_link"
       if ConfirmOverwrite "$resolved_link"; then
-        if [ -d "$resolved_link" ] && [ ! -L "$resolved_link" ]; then
-          rm -rf "$resolved_link"
-        fi
-        ln -sf "$target" "$resolved_link" && echo 'Link ['"$target"'] => ['"$resolved_link"']'
+        ReplaceWithSymlink "$target" "$resolved_link"
         return
       fi
 
@@ -72,9 +100,6 @@ CreateSymbolicLink() {
     fi
     ln -s "$target" "$resolved_link" && echo 'Link ['"$target"'] => ['"$resolved_link"']'
   else
-    if [ -d "$resolved_link" ] && [ ! -L "$resolved_link" ]; then
-      rm -rf "$resolved_link"
-    fi
-    ln -sf "$target" "$resolved_link" && echo 'Link ['"$target"'] => ['"$resolved_link"']'
+      ReplaceWithSymlink "$target" "$resolved_link"
   fi
 }
