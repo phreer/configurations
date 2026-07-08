@@ -1,6 +1,9 @@
 #!/bin/bash
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 
+source "$SCRIPT_DIR/lib/symlink_utils.sh"
+source "$SCRIPT_DIR/lib/log_utils.sh"
+
 # For bash
 OS=$(uname)
 if [ "$OS" = "Linux" ]; then
@@ -16,10 +19,6 @@ INIT_DIR=$HOME/.init
 SSH_CONFIG_FILE="$PREFIX_OS"-config
 GIT_CONFIG_FILE="$PREFIX_OS".gitconfig
 
-LogWarning() {
-  echo -e "\033[1;33m[Warning]\033[0m $1"
-}
-
 CopyFileIfNotExist() {
   local src=$1
   local dst=$2
@@ -30,44 +29,6 @@ CopyFileIfNotExist() {
   fi
 }
 
-CreateSymbolicLink() {
-  local force=$1
-  local target=$2
-  local link_pos=$3
-  local link_dir
-  if [ "${link_pos: -1}" = "/" ]; then
-    link_dir="$link_pos"
-  elif [ -d "${link_pos}" ]; then
-    link_dir="$link_pos"
-  elif [ -e "${link_pos}" ] && [ ! "$force" = "1" ]; then
-    LogWarning "[$link_pos] exists and is not a directory, skip linking"
-    return
-  else
-    link_dir="${link_pos%/*}"
-  fi
-
-  if [ ! -e "$link_dir" ]; then
-    mkdir -p "$link_dir" 2> /dev/null
-  fi
-
-  if [ "$force" -eq "0" ]; then
-    # Determine the final symlink path: if link_pos is (or was) a directory, the
-    # symlink will be created inside it; otherwise link_pos itself is the symlink.
-    local resolved_link
-    if [ "$link_dir" = "$link_pos" ] || [ "${link_pos: -1}" = "/" ]; then
-      resolved_link="${link_dir%/}/$(basename "$target")"
-    else
-      resolved_link="$link_pos"
-    fi
-    if [ -e "$resolved_link" ] || [ -L "$resolved_link" ]; then
-      LogWarning "[$resolved_link] already exists, skip linking"
-      return
-    fi
-    ln -s "$target" "$link_pos" && echo 'Link ['"$target"'] => ['"$link_pos"']'
-  else
-    ln -sf "$target" "$link_pos" && echo 'Link ['"$target"'] => ['"$link_pos"']'
-  fi
-}
 
 # Setup init scripts for bash and zsh
 CreateSymbolicLink 1 "$SCRIPT_DIR/init" "$INIT_DIR"
