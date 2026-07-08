@@ -79,16 +79,14 @@ CreateSymbolicLink 1 "$SCRIPT_DIR"/../.config/clash/ruleset "$HOME"/.config/clas
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/fontconfig/conf.d/10-custom.conf \
     "$HOME"/.config/fontconfig/conf.d/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../vim/.vimrc "$HOME"/
-CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"/
-CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"/
+CreateSymbolicLink 1 "$SCRIPT_DIR"/../vim/.vim "$HOME"/ CreateSymbolicLink 1 "$SCRIPT_DIR"/proxy.sh "$HOME"/
 CreateSymbolicLink 0 "$SCRIPT_DIR"/../.config/systemd/user/uxplay.service \
     "$HOME"/.config/systemd/user/uxplay.service
 
 CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/smart-pinentry.sh "$HOME"/local/bin/pinentry
 CreateSymbolicLink 0 "$SCRIPT_DIR"/helper/mvln "$HOME"/local/bin/
 
-CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/ssh/$SSH_CONFIG_FILE "$HOME"/.ssh/config
-mkdir "$HOME"/.ssh/conf.d 2>/dev/null || true
+CreateSymbolicLink 0 "$SCRIPT_DIR"/../etc/ssh "$HOME/.ssh"
 
 # Git config
 # OS specific config

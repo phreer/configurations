@@ -8,4 +8,3 @@ Host github.com
 
 Host *
 	SendEnv LC_* LANG*
-

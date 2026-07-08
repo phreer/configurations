@@ -5,3 +5,7 @@ Session.vim
 unix-scripts/init/env.d/*.local.env
 etc/git/os.conf
 etc/git/local.conf
+etc/ssh/conf.d/*.local.conf
+etc/ssh/authorized_keys
+etc/ssh/id_*
+etc/ssh/known_hosts
