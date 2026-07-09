@@ -9,3 +9,4 @@ etc/ssh/conf.d/*.local.conf
 etc/ssh/authorized_keys
 etc/ssh/id_*
 etc/ssh/known_hosts
+etc/ssh/known_hosts.old
