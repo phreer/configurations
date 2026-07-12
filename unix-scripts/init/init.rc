@@ -53,6 +53,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.npm/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 
 if command -v nvim >/dev/null 2>&1; then
     export VISUAL='nvim'
