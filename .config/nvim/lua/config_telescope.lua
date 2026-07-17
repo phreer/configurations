@@ -28,6 +28,7 @@ return function()
   vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
   vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+  vim.keymap.set('n', '<leader>fm', builtin.man_pages, {})
   vim.keymap.set('n', '<leader>fr', builtin.resume, {})
   vim.keymap.set("n", "<leader>fg", extensions.live_grep_args.live_grep_args, {})
 end
