@@ -126,6 +126,9 @@ require("lazy").setup({
     ---@module 'obsidian'
     ---@type obsidian.config
     opts = {
+      ui = {
+        enable = false,
+      },
       legacy_commands = false, -- this will be removed in 4.0.0
       workspaces = {
         {
