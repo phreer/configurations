@@ -7,3 +7,5 @@ fi
 alias ls='ls $LS_OPTIONS'
 alias ll='ls -alF --color'
 
+alias ax='adb -s "$IP" shell'
+alias adb='adb -s "$IP"'
