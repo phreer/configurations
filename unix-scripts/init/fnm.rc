@@ -1,0 +1,14 @@
+init_fnm() {
+  local FNM_PATH="$HOME/.local/share/fnm"
+  local __SHELL__=$(basename "$SHELL")
+  # Skip if shell not one of ['bash', 'zsh', 'fish']
+  if [[ "$__SHELL__" != "bash" && "$__SHELL__" != "zsh" ]]; then
+    return
+  fi
+  if [ -d "$FNM_PATH" ]; then
+    export PATH="$FNM_PATH:$PATH"
+    eval "$(fnm env --shell $__SHELL__)"
+  fi
+}
+
+init_fnm

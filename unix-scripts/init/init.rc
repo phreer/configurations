@@ -88,3 +88,4 @@ _load_env_d() {
 _load_env_d
 
 source "$__INIT_DIR/customize-commands.rc"
+source "$__INIT_DIR/fnm.rc"
